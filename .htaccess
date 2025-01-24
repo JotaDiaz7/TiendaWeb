@@ -1,0 +1,23 @@
+Options +FollowSymLinks
+RewriteEngine On
+
+# Evitar reescritura de archivos estáticos
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Regla de reescritura para los producto
+RewriteRule ^producto/([a-zA-Z0-9]+)/([a-zA-Z0-9-]+)(?:/talla-([0-9]+))?$ pages/producto.php?id=$1&nombre=$2&talla=$3 [L,QSA,NC]
+
+# Regla de reescritura para los pedidos
+RewriteRule ^pedido/([0-9]+)$ pages/pedido.php?pedido=$1 [L,QSA]
+
+# Regla de reescritura para la página de tienda
+RewriteRule ^tienda/([a-zA-Z0-9]+)$ pages/tienda.php?categoria=$1 [L,QSA]
+
+# Regla de reescritura para la página de factura
+RewriteRule ^factura/([0-9]+)$ factura/factura.php?pedido=$1 [L,QSA]
+
+# Regla de reescritura para las páginas en la carpeta pages
+RewriteRule ^([a-zA-Z0-9_-]+)$ pages/$1.php [L,QSA]
+RewriteRule ^admin/([a-zA-Z0-9_-]+)(?:/([a-zA-Z0-9_-]+))?$ pages-admin/$1.php?id=$2 [L,QSA]
+

@@ -1,0 +1,160 @@
+/*main*/
+main{
+    padding: 50px 0px;
+    flex-direction: column;
+}
+
+/*Secciones*/
+section{
+    width: 100%;
+}
+@media (min-width: 767.98px) {
+    section{
+        width: 700px;
+    }
+}
+@media (min-width: 993px) {
+    section{
+        width: 900px;
+    }
+}
+
+/*Título*/
+h1{
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-align: left;
+    padding-left: 7%;
+}
+h1 strong{
+    color: var(--mainColor);
+}
+@media (min-width: 767.98px) {
+    main h1, main h3{
+        padding-left: 0%;
+    }
+
+}
+main h3{
+    margin-bottom: 20px;
+    padding-left: 7%;
+}
+
+/*Wrap*/
+#wrapDates{
+    width: 100%;
+}
+.mainWrap{
+    flex-direction: column-reverse;
+}
+@media (min-width:998px) {
+    .mainWrap{
+        flex-direction: row;
+    }
+}
+
+/*Menú*/
+#menuPerfil li{
+    padding: 20px;
+}
+#menuPerfil{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+#menuPerfil ul{
+    width: 70%;
+    flex-wrap: wrap;
+    padding: 10px;
+    border: 2px solid var(--mainColor);
+    margin: 10px 0px;
+    border-radius: 10px;
+}
+@media (min-width:768px) {
+    #menuPerfil ul{
+        width: 100%;
+    }
+    #menuPerfil li{
+        padding: 6px;
+    }
+    #menuPerfil{
+        justify-content: normal;
+    }
+}
+@media (min-width:998px) {
+    #menuPerfil{
+        width: 200px;
+        display: flex;
+    }
+    #menuPerfil ul{
+        flex-direction: column;
+        justify-content: normal;
+        padding: 0px;
+        border: none;
+        margin: 0px;
+        border-radius: 0px;
+    }
+}
+
+/*Formulario*/
+.formWrap{
+    margin: 0px 50px;
+}
+.formMain {
+    min-width: 300px;
+    flex-wrap: wrap;
+    margin-bottom: 80px;
+    flex-direction: column;
+}
+.rowForm,.rowFull{
+    width: 85%;
+    margin-bottom: 30px;
+    flex-direction: column;
+}
+.rowSubmit{
+    width: 85%; 
+}
+.rowSubmit input{
+    width: 150px;
+}
+.inputForm{
+    padding: 10px 10px 7px 10px;
+    text-align: center;
+    border-radius: 10px;
+    border: 1px solid var(--mainColor);
+    position: relative;
+    background: transparent;
+}
+@media (min-width:768px) {
+    .formMain {
+        min-width: 350px;
+        flex-direction: row;
+        align-items: normal;
+    }
+    .rowForm{
+        width: 45%;
+    }
+    .rowSubmit, .rowFull{
+        width: 100%; 
+    }
+}
+@media (min-width:998px) {
+    .formWrap{
+        min-height: 370px;
+    }
+}
+
+/*Password*/
+.showPassword{
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    border: none;
+    cursor: pointer;
+    bottom: 4px;
+}
+.showPassword svg{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

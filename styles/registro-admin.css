@@ -1,0 +1,194 @@
+/*main*/
+main{
+    padding: 50px 0px;
+    flex-direction: column;
+}
+
+/*Secciones*/
+section{
+    width: 100%;
+}
+@media (min-width: 767.98px) {
+    section{
+        width: 700px;
+    }
+}
+@media (min-width: 993px) {
+    section{
+        width: 900px;
+    }
+}
+
+/*Título*/
+h1{
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-align: left;
+    padding-left: 7%;
+}
+h1 strong{
+    color: var(--mainColor);
+}
+@media (min-width: 767.98px) {
+    main h1, main h3{
+        padding-left: 0%;
+    }
+
+}
+main h3{
+    margin-bottom: 20px;
+    padding-left: 7%;
+}
+
+/*Wrap*/
+#wrapDates{
+    width: 100%;
+}
+
+@media (min-width:998px) {
+    .mainWrap{
+        flex-direction: row;
+    }
+}
+
+/*Formulario*/
+.formWrap{
+    margin: 0px 50px;
+}
+.formMain {
+    min-width: 300px;
+    flex-wrap: wrap;
+    margin-bottom: 80px;
+    flex-direction: column;
+}
+.rowSubmit{
+    width: 85%; 
+    margin-top: 30px;
+}
+.button{
+    width: 200px;
+}
+.inputForm{
+    padding: 10px 10px 7px 10px;
+    text-align: center;
+    border-radius: 10px;
+    border: 1px solid var(--mainColor);
+    position: relative;
+    background: transparent;
+}
+@media (min-width:768px) {
+    .formMain {
+        min-width: 350px;
+        flex-direction: row;
+        align-items: normal;
+    }
+    .rowForm{
+        width: 45%;
+    }
+    .rowSubmit, .rowFull{
+        width: 100%; 
+    }
+}
+@media (min-width:998px) {
+    .formWrap{
+        min-height: 370px;
+    }
+}
+
+/*Datos*/
+#dates{
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+    width: 100%;
+}
+.rowFull{
+    width: 100%;
+    flex-direction: column;
+    margin-bottom: 20px;
+
+}
+.rowForm{
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+.rowForm .inputForm{
+    width: 90%;
+}
+.rowFull .inputForm{
+    width: 95%;
+
+}
+/*Inputs*/
+select{
+    font-size: 1em;
+}
+
+/*Imágenes*/
+#imgsWrap{
+    width: 100%;
+    margin-bottom: 30px;
+}
+.imgWrap{
+    width: 130px;
+    height: 120px;
+    border: 1px solid var(--mainColor);
+    cursor: pointer;
+    margin: 20px;
+    position: relative;
+    overflow: hidden;
+}
+.imgWrap img{
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+}
+.imgWrap button, .imgWrap a{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    border-radius: 99px;
+    z-index: 2;
+    cursor: pointer;
+    padding: 3px 3px 0px 3px;
+    background: #80808069;
+    border-color: grey;
+    border: 1px solid ;
+}
+
+/*Info*/
+#info, #info .rowForm{
+    width: 100%;
+}
+textarea{
+    padding: 10px 10px 7px 10px;
+    border-radius: 10px;
+    border: 1px solid var(--mainColor);
+    background: transparent;
+    font-size: 1em;
+    width: 95%;
+    resize: vertical;
+}
+form label{
+    font-weight: bold;
+    display: block;
+}
+
+/*Tabla*/
+table{
+    width: 100%;
+}
+
+/*Password*/
+.showPassword{
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    border: none;
+    cursor: pointer;
+    bottom: 4px;
+}
+.showPassword svg{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

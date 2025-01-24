@@ -1,0 +1,80 @@
+/*main*/
+main{
+    height: 100vh;
+    flex-direction: column;
+}
+@media (min-width: 767.98px) {
+    main{
+        height: 55vh;
+    }
+}
+@media (min-width: 993px) {
+    main{
+        height: 90vh;
+    }
+}
+
+/*Secciones*/
+section{
+    width: 100%;
+}
+.iconMenuWrap{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+@media (min-width: 767.98px) {
+    section{
+        width: 700px;
+    }
+}
+@media (min-width: 993px) {
+    section{
+        width: 800px;
+    }
+}
+
+/*Título*/
+h1{
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+h1 strong{
+    color: var(--mainColor);
+}
+@media (min-width: 767.98px) {
+    h1{
+        text-align: left;
+    }
+}
+
+/*Iconos*/
+.iconMenuCuenta{
+    width: 110px;
+    height: 120px;
+    padding: 40px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.iconMenuCuenta a{
+    flex-direction: column;
+    cursor: pointer;
+}
+.iconMenuCuenta svg{
+    width: 90px;
+}
+.iconMenuCuenta a:hover g, .iconMenuCuenta a:hover path, .iconMenuCuenta a:hover, .iconMenuCuenta a:hover circle{
+    stroke:var(--mainColor);
+    transition: all 0.5s ease;
+}
+h4{
+    margin: 10px 0px;
+    font-size: 1.1rem;
+}
+@media (min-width: 767.98px) {
+    .iconMenuCuenta{
+        width: 150px;
+    }
+}

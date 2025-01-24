@@ -1,0 +1,260 @@
+/*Main*/
+main{
+    min-height: 70vh;
+    margin: 70px auto;
+}
+@media (min-width:998px) {
+    main{
+        width: 970px;
+    }
+}
+@media (min-width:1200px) {
+    main{
+        width: 1050px;
+    }
+}
+@media (min-width:1350px) {
+    main{
+        width: 1200px;
+    }
+}
+@media (min-width:1500px) {
+    main{
+        width: 1400px;
+    }
+}
+@media (min-width:1700px) {
+    main{
+        width: 1550px;
+    }
+}
+@media (min-width:2000px) {
+    main{
+        width: 1700px;
+    }
+}
+
+/*Wraps*/
+#productWrap{
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+}
+#imgWrap{
+    width: 100%;
+    position: relative;
+    min-height: 250px;
+    overflow: hidden;
+}
+#detailsWrap{
+    width: 100%;
+}
+@media (min-width:768px) {
+    #detailsWrap {
+        width: 85%;
+    }
+    #imgWrap{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+}
+@media (min-width:998px) {
+    #productWrap{
+        height: 700px;
+        flex-direction: row;
+        align-items: normal;
+    }
+    #imgWrap{
+        width: 60%;
+    }
+    #detailsWrap{
+        width: 40%;
+    }
+}
+
+/*Imágenes*/
+.imgProduct{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transition: all 0.5s ease;
+}
+.imgProduct img{
+    width: 90%;
+    height: 90%;
+    object-fit: contain;
+    cursor: pointer;
+}
+
+
+@media (max-width:768px) {
+    .show{
+        left: 0px;
+        opacity: 1;
+        z-index: 1;
+    }
+    .showP{
+        left: 0px;
+        opacity: 0;
+        z-index: -1;
+    }
+    .showIn{
+        left: 400px;
+        opacity: 0;
+        z-index: -1;
+    }
+    .showOut, .showOn{
+        left: -400px;
+        z-index: -1;
+        opacity: 0;
+    }
+}
+@media (min-width:768px) {
+    .imgProduct{
+        width: 49.5%;
+        height: 50%;
+        position:relative;
+    }
+}
+
+/*Details*/
+h1{
+    font-size: 2rem;
+    margin: 20px;
+}
+h3 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+#detailsWrap .precio{
+    font-size: 1.5em;
+}
+#detailsWrap .precioOriginal{
+    text-decoration:line-through;
+    color: var(--descuento);
+    margin-left: 10px;
+    font-size: 1.1rem;
+}
+.detailWrap{
+    margin: 20px;
+}
+#sizeWrap{
+    flex-wrap: wrap;
+}
+.buttonSizeWrap{
+    margin: 5px 15px; 
+}
+.selected{
+    border-color: var(--mainColor) !important;
+}
+.selectedSize a{
+    font-weight: bold;
+    color:var(--mainColor) !important ;
+}
+.buttonSize{
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 1.2rem;
+    width: 100%;
+    height: 100%;
+    text-transform: uppercase;
+    padding-top: 1.2px;
+}
+@media (max-width:768px) {
+    #productForm{
+        margin: 0px 20px;
+    }
+
+}
+@media (min-width:768px) {
+    h1{
+        font-size: 2.5rem;
+    }
+    h3 {
+        font-size: 1.7rem;
+    }
+    #precioActual{
+        font-size: 2em;
+    }
+    .detailWrap{
+        margin: 50px 20px;
+    }
+    .buttonColor{
+        width: 40px;
+        height: 40px;
+        margin: 6px;
+    }
+    .buttonSize{
+        padding-top: 2px;
+        font-size: 1.5rem;
+    }
+}
+@media (min-width:998px) {
+    h1{
+        font-size: 2rem;
+    }
+    h3 {
+        font-size: 1.1rem;
+    }
+    #precioActual{
+        font-size: 1.5em;
+    }
+    .detailWrap{
+        margin: 30px 20px;
+    }
+    .buttonColor{
+        width: 25px;
+        height: 25px;
+        margin: 5px;
+    }
+    .buttonSize{
+        font-size: 1rem;
+    }
+}
+
+/*Botón*/
+.button{
+    width: 100%;
+}
+@media (min-width:998px) {
+    .button{
+        width: 100%;
+    }
+}
+@media (min-width:1200px) {
+    .button{
+        width: 80%;
+    }
+    .buttonShopWrap{
+        width: 100% !important;
+    }
+}
+
+/*Info*/
+#info{
+    margin: 50px 20px;
+}
+#info h3{
+    margin-bottom: 20px;
+    align-items: center;
+}
+#info .ml3{
+    margin-left: 3px;
+}
+#listInfo{
+    text-align: justify;
+}
+
+@media (min-width:768px) {
+    #info h3{
+        width: 80%;
+    }
+}
+@media (min-width:998px) {
+    #info{
+        margin: 50px 0px 0px 20px;
+    }
+}

@@ -1,0 +1,114 @@
+/*main*/
+main{
+    min-height: 70vh;
+    flex-direction: column;
+    padding: 70px 15px;
+    align-items: center;
+}
+@media (min-width: 767.98px) {
+    main{
+        min-height: 50vh;
+        padding-top: 70px !important;
+        padding: 0px;
+    }
+}
+@media (min-width: 993px) {
+    main{
+        min-height: 70vh;
+    }
+}
+
+/*Secciones*/
+section{
+    width: 100%;
+}
+@media (min-width: 767.98px) {
+    section{
+        width: 700px;
+    }
+}
+@media (min-width: 993px) {
+    section{
+        width: 900px;
+    }
+}
+
+/*Título*/
+h1{
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-align: left;
+    padding-left: 7%;
+}
+h1 strong{
+    color: var(--secondaryColor);
+}
+@media (min-width: 767.98px) {
+    main h1{
+        padding-left: 0%;
+    }
+
+}
+
+/*Wrap*/
+.deleteWrap p{
+    margin-bottom: 15px;
+    text-align: justify;
+}
+.deleteWrap p span{
+    text-transform: lowercase;
+}
+
+/*Button*/
+.button {
+    padding: 10px 30px;
+    width: 100%;
+}
+@media (min-width: 768px){
+    .button {
+        width: auto;
+        padding: 5px 30px;
+    }
+}
+
+/*Input*/
+#deleteForm, #update{
+    margin-top: 30px;
+}
+form{
+    flex-direction: column;
+}
+.inputForm{
+    width: 100%;
+    padding: 10px 10px 7px 10px;
+    text-align: center;
+    border-radius: 10px;
+    border: 1px solid var(--mainColor);
+    position: relative;
+    background: transparent;
+}
+.rowForm{
+    flex-direction: column;
+    margin: 10px 0px;
+}
+.button{
+    padding: 10px 20px;
+}
+.cancelButton{
+    background-color: var(--secondaryColor);
+    color: var(--fontColor);
+    text-align: center;
+}
+.mb15{
+    margin-bottom: 20px;
+}
+
+@media (min-width: 768px){
+    .inputForm{
+        width: 250px;
+        margin-right: 20px;
+    }
+    .mb15{
+        margin-bottom: 15px;
+    }
+}

@@ -1,0 +1,80 @@
+/*LOGIN*/
+/*Main*/
+main{
+    min-height: 70vh;
+}
+@media (min-width:998px) {
+    main{
+        min-height: 90vh;
+    }
+}
+/*Formulario*/
+.formWrap{
+    margin: 0px 50px;
+}
+.formMain {
+    min-width: 300px;
+}
+.rowForm{
+    margin: 20px 0px;
+    display: flex;
+    flex-direction: column;
+}
+.inputForm{
+    padding: 10px 10px 7px 10px;
+    text-align: center;
+    border-radius: 10px;
+    border: 1px solid var(--mainColor);
+    position: relative;
+    background: transparent;
+}
+@media (min-width:768px) {
+    .formMain {
+        min-width: 350px;
+    }
+}
+@media (min-width:998px) {
+    .formWrap{
+        min-height: 370px;
+    }
+}
+
+/*Password*/
+.showPassword{
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    border: none;
+    cursor: pointer;
+    bottom: 4px;
+}
+.showPassword svg{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/*Checkbox*/
+.checkWrap a{
+    color: var(--mainColor);
+}
+.checkLabel{
+    font-size: 0.9rem;
+
+}
+
+/*Anclas*/
+.anclaPassLost{
+    text-align: center;
+    cursor: pointer;
+    margin: 10px 0px;
+}
+.anclaPassLost a{
+    font-size: 0.9rem;
+}
+.anclaLoginRegister{
+    text-align: center;
+    cursor: pointer;
+    margin: 45px 0px;
+    font-size: 1.1rem;
+}

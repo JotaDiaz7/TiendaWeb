@@ -1,0 +1,47 @@
+# Ignorar carpetas específicas
+/bbdd/
+
+# Ignorar archivos específicos
+.env
+config.php
+debug.log
+
+# Ignorar por extensiones
+*.log          # Archivos con extensión .log
+*.tmp          # Archivos temporales
+*.bak          # Archivos de respaldo
+
+# Ignorar archivos o carpetas en cualquier nivel
+**/cache/      # Ignora todas las carpetas llamadas "cache"
+**/*.DS_Store  # Ignora todos los archivos .DS_Store en cualquier lugar
+
+# Excepciones (añadir un archivo específico al seguimiento aunque esté en una carpeta ignorada)
+!/important/config.json
+
+# Ignorar archivos del sistema operativo
+# Windows
+Thumbs.db
+desktop.ini
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Linux
+*~              # Archivos temporales terminados en ~
+
+# Ignorar archivos generados por IDEs/editores
+# VSCode
+.vscode/
+
+# IntelliJ IDEA
+.idea/
+
+# Eclipse
+.project
+.classpath
+
+# Sublime Text
+*.sublime-workspace
+*.sublime-project
