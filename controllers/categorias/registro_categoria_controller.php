@@ -20,11 +20,14 @@ require '../../models/categorias_models.php';
 $model = new CategoriasModel;
 
 //Comprobamos el nombre de la categoría
-$categoria = htmlspecialchars(trim($_POST["categoria"]));
-validarTexto($categoria, "categoria");
+$nombre = htmlspecialchars(trim($_POST["categoria"]));
+validarTexto($nombre, "categoria");
+
+//Creamos un id para esa categoría
+$id = crearIdCaract($nombre);
 
 //Vamos a comprobar que no exista ya esa categoria
-$check = $model -> comprobarCategoria($con, $categoria);
+$check = $model -> comprobarCategoria($con, $id);
 
 if($check) {
     echo json_encode("existe");
@@ -35,7 +38,7 @@ if($check) {
 $padre = !empty(trim($_POST["padre"])) ? htmlspecialchars(trim($_POST["padre"])) : null;
 
 //Registramos a la categoría
-$model -> registro($con, $categoria, $padre);
+$model -> registro($con, $id,$nombre, $padre);
 
 // Cerrar la conexión
 $con = null; 

@@ -36,8 +36,12 @@ require '../config/orderBuscarPag.php';
             <h1>Lista de categorías</h1>
         </section>
         <section>
-            <div class="d-flex space-end">
+            <div class="d-flex space-between">
                 <a href="/admin/registro-categoria" class="button">Añadir categoría</a>
+                <form method="get">
+                    <input type="text" name="buscar" class="inputForm" placeholder="Producto">
+                    <input type="submit" class="button" value="Buscar">
+                </form>
             </div>
             <table>
                 <thead>
@@ -47,7 +51,15 @@ require '../config/orderBuscarPag.php';
                     <th>Eliminar</th>
                 </thead>
                 <tbody>
-                    <?php listar_categorias($con, $inicio, $numItemsPag, $pagina) ?>
+
+                    <?php
+                    if (isset($buscar)) {
+                        buscar_categoria($con, $buscar);
+                    } else {
+                        listar_categorias($con, $inicio, $numItemsPag, $pagina);
+                    }
+
+                    ?>
                 </tbody>
             </table>
         </section>

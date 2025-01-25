@@ -1,7 +1,7 @@
 <?php
 function buscar_usuario($con, $buscar)
 {
-    require '../models/usuarios_models.php';
+    require_once '../models/usuarios_models.php';
     $model = new UsuariosModel;
     $usuarios = $model -> buscarUsuario($con, $buscar);
     include '../views/tabla_usuarios.php';
@@ -9,7 +9,7 @@ function buscar_usuario($con, $buscar)
 
 function consultar_usuario($con, $id)
 {
-    require '../models/usuarios_models.php';
+    require_once '../models/usuarios_models.php';
     $model = new UsuariosModel;
     $dates = $model -> getUsuario($con, $id);
     include '../views/data_usuario.php';

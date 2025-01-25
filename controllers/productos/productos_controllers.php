@@ -1,7 +1,7 @@
 <?php
 function buscar_producto($con, $buscar)
 {
-    require '../models/productos_models.php';
+    require_once '../models/productos_models.php';
     $model = new ProductosModel;
     $dates = $model -> buscarProducto($con, $buscar);
     include '../views/tabla_productos.php';
@@ -9,14 +9,14 @@ function buscar_producto($con, $buscar)
 
 function consultar_producto($con, $id)
 {
-    require '../models/productos_models.php';
+    require_once '../models/productos_models.php';
     $model = new ProductosModel;
     $dates = $model -> getProducto($con, $id);
     include '../views/data_producto.php';
 }
 
 function plantilla_producto($con, $id, $esCalzado, $stockProd, $tallaProd){
-    require '../models/productos_models.php';
+    require_once '../models/productos_models.php';
     $model = new ProductosModel;
     $dates = $model -> getProducto($con, $id);
     $calzado = $esCalzado;
@@ -40,6 +40,15 @@ function listar_productos_categoria($con, $categoria, $order, $inicio, $num)
     require '../controllers/prod_nums/prod_nums_controller.php';
     $model = new ProductosModel;
     $dates = $model -> getProductosCat($con, $categoria, $order, $inicio, $num);
+    include '../views/producto_card.php';
+}
+
+function buscar_productos_usuario($con, $producto, $categoria)
+{
+    require_once '../models/productos_models.php';
+    require '../controllers/prod_nums/prod_nums_controller.php';
+    $model = new ProductosModel;
+    $dates = $model -> buscarProductoUsuario($con, $producto,$categoria);
     include '../views/producto_card.php';
 }
 

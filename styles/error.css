@@ -1,0 +1,18 @@
+main{
+    height: 70vh;
+}
+
+section{
+    width: 1200px;
+    margin: 0px auto;
+}
+
+h1{
+    margin: 50px 0px;
+    font-size: 2em;
+}
+
+p{
+    font-size: 1.2em;
+    padding-top: 20px;
+}

@@ -23,7 +23,7 @@ require './config/carrito.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/main.css">
     <link rel="stylesheet" href="./styles/index.css">
-    <link rel="icon" href="./media/favicon.png">
+    <link rel="icon" href="./media/favicon.PNG">
     <script type="module" src="/js/general.js"></script>
     <title>La madriguera</title>
 </head>

@@ -1,7 +1,7 @@
 <?php if ($categorias) {
     foreach ($categorias as $categoria) {
 ?>
-        <option value="<?= $categoria["categoria"] ?>"><?= $categoria["categoria"] ?></option>
+        <option value="<?= $categoria["id"] ?>"><?= $categoria["nombre"] ?></option>
 
 <?php }
 } ?>

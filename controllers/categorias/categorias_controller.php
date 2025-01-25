@@ -39,3 +39,18 @@ function contarCat($con)
     $num = $model -> contar($con);
     return $num;
 }
+
+function checkCatNombre($con, $categoria){
+    require_once '../models/categorias_models.php';
+    $model = new CategoriasModel;
+    $categoria = $model -> comprobarCategoria($con, $categoria);
+    return $categoria;
+}
+
+function buscar_categoria($con, $buscar)
+{
+    require_once __DIR__ . '/../../models/categorias_models.php';
+    $model = new CategoriasModel;
+    $categorias = $model -> buscarCategoría($con, $buscar);
+    include __DIR__ . '/../../views/tabla_categorias.php';
+}

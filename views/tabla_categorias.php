@@ -2,13 +2,13 @@
     foreach ($categorias as $categoria) {
         $estado = $categoria["activo"] == 0 ? 1 : 0;
         //Vamos a comprobar si es una categoría padre con hijos
-        $catPadre = $model -> tieneHijos($con, $categoria["categoria"]);
+        $catPadre = $model -> tieneHijos($con, $categoria["id"]);
 ?>
         <tr>
-            <td class="tc"><?= $categoria["categoria"] ?></td>
+            <td class="tc"><?= $categoria["nombre"] ?></td>
             <td class="tc"><?= $categoria["padre"] ?></td>
             <td class="tc">
-                <a href="/controllers/categorias/estado_categoria_controller.php?categoria=<?= $categoria["categoria"] ?>&estado=<?= $estado ?>&pagina=<?= $pagina ?>">
+                <a href="/controllers/categorias/estado_categoria_controller.php?categoria=<?= $categoria["id"] ?>&estado=<?= $estado ?>&pagina=<?= $pagina ?>">
                     <?php if ($categoria["activo"] == 1) { ?>
                         <svg width="25px" height="25px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000">
                             <g>
@@ -33,7 +33,7 @@
             </td>
             <td class="tc">
                 <?php if ($categoria["activo"] == 0 && !$catPadre) { ?>
-                    <a href="/controllers/categorias/borrar_categoria_controller.php?categoria=<?= $categoria["categoria"] ?>">
+                    <a href="/controllers/categorias/borrar_categoria_controller.php?categoria=<?= $categoria["id"] ?>">
                         <svg width="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g stroke-width="0" />
                             <g stroke-linecap="round" stroke-linejoin="round" />

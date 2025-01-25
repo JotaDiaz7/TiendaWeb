@@ -127,7 +127,7 @@ class ProductosModel
     //Para obtener todos los productos
     public function listarProductos($con, $order)
     {
-        $order= $order == null ? 'registro ASC' : 'nombre '.$order;
+        $order = $order == null ? 'registro ASC' : 'nombre ' . $order;
         $sql = "SELECT * FROM productos ORDER BY $order";
 
         try {
@@ -141,7 +141,7 @@ class ProductosModel
         }
     }
 
-    //Buscamos el cliente
+    //Buscamos al producto
     public function buscarProducto($con, $busqueda)
     {
         $sql = "SELECT * FROM productos 
@@ -179,11 +179,11 @@ class ProductosModel
     //Vamos a obtener los productos según categoría
     public function getProductosCat($con, $categoria, $order, $inicio, $num)
     {
-        $order= $order == null ? 'p.registro ASC' : 'p.nombre '.$order;
+        $order = $order == null ? 'p.registro ASC' : 'p.nombre ' . $order;
         $sql = "
             SELECT p.*
             FROM productos p
-            LEFT JOIN categorias c ON p.categoria = c.categoria
+            LEFT JOIN categorias c ON p.categoria = c.id
             WHERE (p.categoria = :categoria OR c.padre = :categoria)
             AND p.activo = 1
             ORDER BY $order LIMIT $inicio, $num
@@ -191,6 +191,29 @@ class ProductosModel
         try {
             $stmt = $con->prepare($sql);
             $stmt->bindParam(':categoria', $categoria);
+            $stmt->execute();
+
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            header("Location: /error/Error en la consulta: " . $e->getMessage());
+            exit;
+        }
+    }
+
+    //Vamos a obtener los productos según categoría
+    public function buscarProductoUsuario($con, $busqueda,$categoria)
+    {
+        $sql = "
+                SELECT p.*
+                FROM productos p
+                LEFT JOIN categorias c ON p.categoria = c.id
+                WHERE (p.categoria = :categoria OR c.padre = :categoria)
+                AND p.activo = 1 AND p.nombre LIKE :busqueda
+            ";
+        try {
+            $stmt = $con->prepare($sql);
+            $stmt->bindParam(':categoria', $categoria);
+            $stmt->bindValue(':busqueda', "%$busqueda%");
             $stmt->execute();
 
             return $stmt->fetchAll(PDO::FETCH_ASSOC);

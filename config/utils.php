@@ -106,7 +106,6 @@ function validarPrecio($precio)
 {
     $precio = trim($precio);
 
-    // Verificar si el precio es un número decimal válido y mayor o igual a 1
     if (!preg_match('/^[0-9]+(\.[0-9]{1,2})?$/', $precio) || floatval($precio) < 1) {
         echo json_encode('precio');
         exit;
@@ -118,7 +117,6 @@ function validarNum($num, $campo)
 {
     $num = trim($num);
 
-    // Verificar si el precio es un número decimal válido y mayor o igual a 1
     if (!preg_match('/^\d{1,2}$/', $num)) {
         echo json_encode("Formato " . $campo . " incorrecto.");
         exit;
@@ -128,20 +126,16 @@ function validarNum($num, $campo)
 //Vamos a crear una función para formatear los nombres de las url
 function formatearNombre($texto)
 {
-    // Convertir a minúsculas
     $texto = strtolower($texto);
 
-    // Reemplazar tildes y caracteres especiales
     $texto = str_replace(
         ['á', 'é', 'í', 'ó', 'ú', 'ñ', 'ü', 'ä', 'ö', 'ë', 'ï', 'â', 'ê', 'î', 'ô', 'û'],
         ['a', 'e', 'i', 'o', 'u', 'n', 'u', 'a', 'o', 'e', 'i', 'a', 'e', 'i', 'o', 'u'],
         $texto
     );
 
-    // Reemplazar espacios y múltiples guiones por un solo guion
     $texto = preg_replace('/[\s\-]+/', '-', $texto);
 
-    // Eliminar posibles guiones al inicio o al final
     $texto = trim($texto, '-');
 
     return $texto;
@@ -162,4 +156,20 @@ function calcular_descuento($dates, $precio)
     }
 
     return $precio;
+}
+
+//Vamos a crearnos una función para crear id de características
+function crearIdCaract($texto)
+{
+    $texto = strtolower($texto);
+
+    $texto = str_replace(
+        ['á', 'é', 'í', 'ó', 'ú', 'ñ', 'ü', 'ä', 'ö', 'ë', 'ï', 'â', 'ê', 'î', 'ô', 'û', 'ç'],
+        ['a', 'e', 'i', 'o', 'u', 'n', 'u', 'a', 'o', 'e', 'i', 'a', 'e', 'i', 'o', 'u', 'c'],
+        $texto
+    );
+
+    $texto = preg_replace('/[^a-z0-9]/', '', $texto);
+
+    return $texto;
 }

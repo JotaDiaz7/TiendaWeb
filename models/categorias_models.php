@@ -2,13 +2,14 @@
 class CategoriasModel
 {
     //Para registrar categoría
-    public function registro($con, $categoria, $padre)
+    public function registro($con, $id, $categoria, $padre)
     {
-        $sql = "INSERT INTO categorias (categoria, padre)
-                VALUES (:categoria, :padre)";
+        $sql = "INSERT INTO categorias (id, nombre, padre)
+                VALUES (:id, :nombre, :padre)";
         try {
             $stmt = $con->prepare($sql);
-            $stmt->bindValue(':categoria', $categoria);
+            $stmt->bindValue(':id', $id);
+            $stmt->bindValue(':nombre', $categoria);
             $stmt->bindValue(':padre', $padre);
             $stmt->execute();
         } catch (PDOException $e) {
@@ -20,15 +21,15 @@ class CategoriasModel
     //Para comprobar si la categoría ya existe 
     public function comprobarCategoria($con, $categoria)
     {
-        $sql = "SELECT categoria FROM categorias WHERE categoria = :categoria";
+        $sql = "SELECT nombre FROM categorias WHERE id = :id";
         try {
             $stmt = $con->prepare($sql);
-            $stmt->bindParam(':categoria', $categoria);
+            $stmt->bindParam(':id', $categoria);
             $stmt->execute();
 
-            $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            return $usuario ? true : false;
+            return $result["nombre"] ?? false;
         } catch (PDOException $e) {
             echo json_encode("ErrorConsulta: " . $e->getMessage());
             exit;
@@ -80,7 +81,7 @@ class CategoriasModel
     //Para activar o desactivar las categorías
     public function estadoCategoria($con, $categoria, $activo)
     {
-        $sql = "UPDATE categorias SET activo = :activo WHERE categoria = :categoria";
+        $sql = "UPDATE categorias SET activo = :activo WHERE id = :categoria";
         try {
             $stmt = $con->prepare($sql);
             $stmt->bindParam(':activo', $activo);
@@ -97,7 +98,7 @@ class CategoriasModel
     //Para borrar una categoría
     public function borrarCategoria($con, $categoria)
     {
-        $sql = "DELETE FROM categorias WHERE categoria = :categoria";
+        $sql = "DELETE FROM categorias WHERE id = :categoria";
         try {
             $stmt = $con->prepare($sql);
 
@@ -114,7 +115,7 @@ class CategoriasModel
     //Para obtener la categoría padre de un hijo
     public function getCategoriaPadre($con, $categoriaHijo)
     {
-        $sql = "SELECT padre FROM categorias WHERE categoria = :categoriaHijo";
+        $sql = "SELECT padre FROM categorias WHERE id = :categoriaHijo";
 
         try {
             $stmt = $con->prepare($sql);
@@ -135,8 +136,8 @@ class CategoriasModel
         $sql = "SELECT 
                 p.categoria
             FROM productos p JOIN categorias c
-            ON p.categoria = c.categoria 
-            WHERE c.padre = 'Calzado' AND p.id = :id";
+            ON p.categoria = c.id 
+            WHERE c.padre = 'calzado' AND p.id = :id";
 
         try {
             $stmt = $con->prepare($sql);
@@ -189,4 +190,22 @@ class CategoriasModel
             exit;
         }
     }
+
+        //Buscamos a la categoría
+        public function buscarCategoría($con, $categoria)
+        {
+            $sql = "SELECT * FROM categorias 
+                    WHERE nombre LIKE :categoria";
+    
+            try {
+                $stmt = $con->prepare($sql);
+                $stmt->bindValue(':categoria', "%$categoria%");
+                $stmt->execute();
+    
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            } catch (PDOException $e) {
+                header("Location: /error/Error en la consulta: " . $e->getMessage());
+                exit;
+            }
+        }
 }
