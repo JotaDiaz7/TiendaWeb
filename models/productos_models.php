@@ -224,11 +224,16 @@ class ProductosModel
     }
 
     //Vamos a obtener el número total de productos
-    public function contar($con)
+    public function contar($con, $categoria)
     {
-        $sql = "SELECT count(*) as count FROM productos";
+        if(empty($categoria)){
+            $sql = "SELECT count(*) as count FROM productos";
+        }else{
+            $sql = "SELECT count(*) as count FROM productos WHERE categoria = :categoria";
+        }
         try {
             $stmt = $con->prepare($sql);
+            if(!empty($categoria)) $stmt->bindParam(':categoria', $categoria);
             $stmt->execute();
 
             $result = $stmt->fetch(PDO::FETCH_ASSOC);

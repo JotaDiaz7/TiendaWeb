@@ -8,12 +8,12 @@ $con = conectar_db();
 seguridad(true, 1, $rol ?? -1);
 
 $urlA = '/admin/productos';
-$numItemsPag = 6; //Limitamos los elementos que queremos que aparezcan
+$numItemsPag = 7; //Limitamos los elementos que queremos que aparezcan
 
 //Vamos a llamar al controller para obtener los datos de los productos y su view
 require  '../controllers/productos/productos_controllers.php';
 //Obtenemos el número total de elementos
-$totalItems = contar($con);
+$totalItems = contar($con, "");
 
 require '../config/orderBuscarPag.php';
 

@@ -80,5 +80,5 @@ foreach ($imgs as $img) {
     }
 }
 
-echo json_encode("dsfdf");
+echo json_encode("ok");
 exit;

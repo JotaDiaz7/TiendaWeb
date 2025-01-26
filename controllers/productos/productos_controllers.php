@@ -52,9 +52,9 @@ function buscar_productos_usuario($con, $producto, $categoria)
     include '../views/producto_card.php';
 }
 
-function contar($con){
+function contar($con, $categoria){
     require_once '../models/productos_models.php';
     $model = new ProductosModel;
-    $num = $model -> contar($con);
+    $num = $model -> contar($con, $categoria);
     return $num;
 }

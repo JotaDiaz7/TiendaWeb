@@ -22,5 +22,5 @@ RewriteRule ^([a-zA-Z0-9_-]+)$ pages/$1.php [L,QSA]
 RewriteRule ^admin/([a-zA-Z0-9_-]+)(?:/([a-zA-Z0-9_-]+))?$ pages-admin/$1.php?id=$2 [L,QSA]
 
 # Si nos da error 404 que nos redirija a nuestra página
-RewriteRule ^error/([a-zA-Z0-9]+)$ pages/error.php?error=$1 [L,QSA]
+RewriteRule ^error/([a-zA-Z0-9%20\s]+)$ pages/error.php?error=$1 [L,QSA]
 ErrorDocument 404 /error

@@ -32,7 +32,7 @@ $stock = $model->getStock($con, $idProd);
 $check = $model->comprobarTalla($con, $idProd, $talla);
 
 if (!$check) {
-    header("Location: /");
+    header("Location: /error/Pero, aun no se le ha asignado ningún stock a este producto o la talla es incorrecta.");
     exit;
 }
 

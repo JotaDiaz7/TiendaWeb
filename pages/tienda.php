@@ -27,7 +27,7 @@ require '../config/carrito.php';
 
 require_once '../controllers/productos/productos_controllers.php';
 //Obtenemos el número total de elementos
-$totalItems = contar($con);
+$totalItems = contar($con, $categoria);
 
 require_once '../config/orderBuscarPag.php';
 
