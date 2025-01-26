@@ -67,7 +67,7 @@ require '../config/orderBuscarPag.php';
                     if (isset($buscar)) {
                         buscar_producto($con, $buscar);
                     } else {
-                        listar_productos($con, $order);
+                        listar_productos($con, $order, $inicio, $numItemsPag);
                     }
                     ?>
                 </tbody>

@@ -125,10 +125,10 @@ class ProductosModel
     }
 
     //Para obtener todos los productos
-    public function listarProductos($con, $order)
+    public function listarProductos($con, $order, $inicio, $num)
     {
-        $order = $order == null ? 'registro ASC' : 'nombre ' . $order;
-        $sql = "SELECT * FROM productos ORDER BY $order";
+        $order = $order == null ? 'registro DESC' : 'nombre ' . $order;
+        $sql = "SELECT * FROM productos ORDER BY $order LIMIT $inicio, $num";
 
         try {
             $stmt = $con->prepare($sql);
@@ -179,7 +179,7 @@ class ProductosModel
     //Vamos a obtener los productos según categoría
     public function getProductosCat($con, $categoria, $order, $inicio, $num)
     {
-        $order = $order == null ? 'p.registro ASC' : 'p.nombre ' . $order;
+        $order = $order == null ? 'p.registro DESC' : 'p.nombre ' . $order;
         $sql = "
             SELECT p.*
             FROM productos p

@@ -76,7 +76,7 @@ class UsuariosModel
             $stmt->bindParam(':id', $id);
             $stmt->execute();
 
-            return $stmt->fetch(PDO::FETCH_ASSOC);; // El email ya existe y pertenece a otro usuario
+            return $stmt->fetch(PDO::FETCH_ASSOC); // El email ya existe y pertenece a otro usuario
 
         } catch (PDOException $e) {
             echo json_encode("ErrorConsulta: " . $e->getMessage());
@@ -251,4 +251,25 @@ class UsuariosModel
             exit;
         }
     }
+
+        //Para recuperar la contraseña
+        public function recuperarPassword($con, $email, $nombre, $apellidos)
+        {
+            $sql = "SELECT id FROM usuarios WHERE email = :email AND nombre = :nombre AND apellidos = :apellidos";
+            try {
+                $stmt = $con->prepare($sql);
+                $stmt->bindParam(':email', $email);
+                $stmt->bindParam(':nombre', $nombre);
+                $stmt->bindParam(':apellidos', $apellidos);
+                $stmt->execute();
+                
+                $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                return $result["id"] ?? false;
+    
+            } catch (PDOException $e) {
+                echo json_encode("ErrorConsulta: " . $e->getMessage());
+                exit;
+            }
+        }
 }

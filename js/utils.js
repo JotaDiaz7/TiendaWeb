@@ -126,7 +126,11 @@ export function menuMov() {
             uls.forEach(ul =>{
                 let catUl = ul.getAttribute("data-cat")
 
-                catUl == cat ? ul.classList.add("showList") : ul.classList.remove("showList")
+                if(catUl == cat){
+                    ul.classList.contains("showList") ? ul.classList.remove("showList") : ul.classList.add("showList")
+                }else{
+                    ul.classList.remove("showList")
+                }
             })
 
         }

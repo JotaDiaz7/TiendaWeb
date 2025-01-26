@@ -1,4 +1,5 @@
 <?php
+//Vamos a crearnos funciones para saber la url de la página en la que nos encontramos en ese momento
 $url_actual = basename($_SERVER['REQUEST_URI']);
 
 function checkoutPage()
@@ -21,7 +22,7 @@ function cuentaPage()
     global $url_actual;
     $special_pages = ['cuenta', 'mi-perfil', 'pedidos'];
 
-    // Recorrer el array y comprobar si alguna página está en la URL
+    // Recorremos el array y comprobamos si alguna página está en la URL
     foreach ($special_pages as $page) {
         if (strpos($url_actual, $page) !== false) {
             return true;

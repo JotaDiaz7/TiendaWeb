@@ -10,6 +10,17 @@ if ((isset($_POST["nombre"]) && empty($_POST["nombre"]))
     exit;
 }
 
+//Vamos a comprobar que al menos se haya subido una foto
+if (
+    $_FILES['img1']['error'] == 4
+    && $_FILES['img2']['error'] == 4
+    && $_FILES['img3']['error'] == 4
+    && $_FILES['img4']['error'] == 4
+) {
+    echo json_encode("emptyImg");
+    exit;
+}
+
 //Vamos a incluir el archivo que contiene el resto de funciones de validación
 require '../../config/utils.php';
 
@@ -69,5 +80,5 @@ foreach ($imgs as $img) {
     }
 }
 
-echo json_encode("ok");
+echo json_encode("dsfdf");
 exit;

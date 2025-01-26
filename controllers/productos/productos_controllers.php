@@ -26,11 +26,11 @@ function plantilla_producto($con, $id, $esCalzado, $stockProd, $tallaProd){
     include '../views/detalles_producto.php';
 }
 
-function listar_productos($con, $order)
+function listar_productos($con, $order, $inicio, $num)
 {
     require_once '../models/productos_models.php';
     $model = new ProductosModel;
-    $dates = $model -> listarProductos($con, $order);
+    $dates = $model -> listarProductos($con, $order, $inicio, $num);
     include '../views/tabla_productos.php';
 }
 

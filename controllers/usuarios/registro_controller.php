@@ -67,6 +67,8 @@ $model -> registro($con, $id, $nombre, "", $email, $passwordEnc, $fechaReg, "", 
 //Hacemos login
 $model -> login($con, $email, $password);
 
+require '../carrito/login_carrito_controller.php';
+
 // Cerrar la conexión
 $con = null; 
 

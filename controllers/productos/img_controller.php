@@ -1,20 +1,5 @@
 <?php
 
-//Vamos a comprobar que al menos se haya subido una foto
-if (
-    $_FILES['img1']['error'] == 4
-    && $_FILES['img2']['error'] == 4
-    && $_FILES['img3']['error'] == 4
-    && $_FILES['img4']['error'] == 4
-    && (isset($_POST["img1"]) && empty($_POST["img1"]))
-    && (isset($_POST["img2"]) && empty($_POST["img2"]))
-    && (isset($_POST["img3"]) && empty($_POST["img3"]))
-    && (isset($_POST["img4"]) && empty($_POST["img4"]))
-) {
-    echo json_encode("emptyImg");
-    exit;
-}
-
 //Ahora vamos a atrapar a todas las imágenes que se hayan subido
 $imgs = $_FILES;
 
@@ -25,6 +10,12 @@ if (!empty($imgs)) {
         $name = $img['tmp_name'];
         if (!empty($name)) {
             $dataFile = GetImageSize($name);
+
+            // Validar si $dataFile es válido
+            if ($dataFile === false) {
+                echo json_encode("formatoImg");
+                exit;
+            }
 
             //Comprobamos que sea una imagen en formato png, jpg, jpeg o gif
             $formatos = ["png", "jpg", "jpeg", "gif"];
@@ -39,7 +30,7 @@ if (!empty($imgs)) {
             }
 
             if ($error) {
-                echo json_encode("formatoImg " . $formatoFile);
+                echo json_encode("formatoImg");
                 exit;
             }
 
@@ -56,7 +47,7 @@ if (!empty($imgs)) {
 }
 
 //Capturamos el nombre de las imágenes
-$img1 = $_FILES['img1']['error'] == 4 ? $_POST["img1"] : $_FILES['img1']['name'];
-$img2 = $_FILES['img2']['error'] == 4 ? $_POST["img2"] : $_FILES['img2']['name'];
-$img3 = $_FILES['img3']['error'] == 4 ? $_POST["img3"] : $_FILES['img3']['name'];
-$img4 = $_FILES['img4']['error'] == 4 ? $_POST["img4"] : $_FILES['img4']['name'];
+$img1 = isset($_FILES['img1']) && $_FILES['img1']['error'] == 4 ? ($_POST["img1"] ?? null) : ($_FILES['img1']['name'] ?? null);
+$img2 = isset($_FILES['img2']) && $_FILES['img2']['error'] == 4 ? ($_POST["img2"] ?? null) : ($_FILES['img2']['name'] ?? null);
+$img3 = isset($_FILES['img3']) && $_FILES['img3']['error'] == 4 ? ($_POST["img3"] ?? null) : ($_FILES['img3']['name'] ?? null);
+$img4 = isset($_FILES['img4']) && $_FILES['img4']['error'] == 4 ? ($_POST["img4"] ?? null) : ($_FILES['img4']['name'] ?? null);

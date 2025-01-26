@@ -1,5 +1,6 @@
 # Ignorar carpetas específicas
 /bbdd/
+/media/
 
 # Ignorar archivos específicos
 .env
