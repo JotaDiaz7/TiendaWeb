@@ -15,7 +15,7 @@ $categoriaId = $_GET['categoria'];
 //Vamos a ver si la categoría existe
 $categoria = checkCatNombre($con, $categoriaId);
 if (!$categoria) {
-    header("Location: /error/Lo sentimos, pero no hemos podido encontrar esa categoría");
+    header("Location: /error?error=Lo sentimos, pero no hemos podido encontrar esa categoría");
     exit;
 }
 

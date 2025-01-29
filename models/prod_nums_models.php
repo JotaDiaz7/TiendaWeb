@@ -30,7 +30,7 @@ class ProdNumsModel
 
             return $stmt->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
-            header("Location: ../error/Ha habido un problema: " . $e->getMessage());
+            header("Location: /error?error=Error en la consulta: " . $e->getMessage());
             exit;
         }
     }
@@ -50,7 +50,7 @@ class ProdNumsModel
 
             return $stmt->fetchAll(PDO::FETCH_ASSOC);;
         } catch (PDOException $e) {
-            header("Location: ../error/Ha habido un problema: " . $e->getMessage());
+            header("Location: /error?error=Error en la consulta: " . $e->getMessage());
             exit;
         }
     }
@@ -73,7 +73,7 @@ class ProdNumsModel
 
             return $result["stock"];
         } catch (PDOException $e) {
-            header("Location: ../error/Ha habido un problema: " . $e->getMessage());
+            header("Location: /error?error=Error en la consulta: " . $e->getMessage());
             exit;
         }
     }
@@ -99,6 +99,25 @@ class ProdNumsModel
         }
     }
 
+    //Para disminuir el stock
+    public function disminuirStock($con, $producto, $talla, $stock)
+    {
+        $sql = "UPDATE prod_nums 
+                    SET stock = stock - :stock
+                    WHERE producto = :producto AND talla = :talla";
+
+        try {
+            $stmt = $con->prepare($sql);
+            $stmt->bindParam(':stock', $stock);
+            $stmt->bindParam(':producto', $producto);
+            $stmt->bindParam(':talla', $talla);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo json_encode("ErrorConsulta: " . $e->getMessage());
+            exit;
+        }
+    }
+
 
     //Obtenemos todas las tallas que tengan stock
     public function getTallas($con, $producto)
@@ -112,7 +131,7 @@ class ProdNumsModel
 
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
-            header("Location: /error/Error en la consulta: " . $e->getMessage());
+            header("Location: /error?error=Error en la consulta: " . $e->getMessage());
             exit;
         }
     }
@@ -131,7 +150,7 @@ class ProdNumsModel
 
             return $result["talla"] ?? 0;
         } catch (PDOException $e) {
-            header("Location: /error/Error en la consulta: " . $e->getMessage());
+            header("Location: /error?error=Error en la consulta: " . $e->getMessage());
             exit;
         }
     }
@@ -149,7 +168,7 @@ class ProdNumsModel
 
             return $stmt->rowCount() > 0;
         } catch (PDOException $e) {
-            header("Location: /error/Error en la consulta: " . $e->getMessage());
+            header("Location: /error?error=Error en la consulta: " . $e->getMessage());
             exit;
         }
     }

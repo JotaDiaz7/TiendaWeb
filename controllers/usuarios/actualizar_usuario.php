@@ -67,9 +67,5 @@ $result = $model->updateUsuario($con, $id, $nombre, $apellidos, $email, $movil, 
 // Cerrar la conexión
 $con = null;
 
-if ($result) {
-    echo json_encode("ok");
-} else {
-    echo json_encode("error");
-}
+echo json_encode("ok");
 exit;

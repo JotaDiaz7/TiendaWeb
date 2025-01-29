@@ -1,0 +1,406 @@
+/*Main*/
+main {
+    width: 95%;
+    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+}
+
+main section {
+    width: 100%;
+}
+
+@media (min-width:768px) {
+    main {
+        width: 85%;
+    }
+}
+
+@media (min-width:998px) {
+    main {
+        width: 955px;
+    }
+}
+
+@media (min-width:1200px) {
+    main {
+        width: 1100px;
+    }
+}
+
+@media (min-width:1500px) {
+    main {
+        width: 1200px;
+    }
+}
+
+@media (min-width:1700px) {
+    main {
+        width: 1300px;
+    }
+}
+
+@media (min-width:2000px) {
+    main {
+        width: 1400px;
+    }
+}
+
+/*Titles*/
+h2 {
+    color: var(--mainColor);
+    font-size: 1.5rem;
+    border-bottom: 2px solid var(--mainColor);
+    margin-bottom: 20px;
+}
+
+@media (min-width:768px) {
+    h2 {
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+}
+
+/*Sections*/
+main section {
+    min-height: 620px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#datesWrap {
+    width: 100%;
+}
+
+.container {
+    height: auto;
+    margin-bottom: 40px;
+    transition: all 0.5s ease;
+}
+
+.hiddenContainer {
+    height: 0px;
+    overflow: hidden;
+    margin-bottom: 10px !important;
+}
+
+#resumeWrap {
+    width: 25%;
+    height: 250px;
+}
+
+@media (min-width:998px) {
+    #datesWrap {
+        width: 70%;
+    }
+}
+
+@media (min-width:1350px) {
+    #datesWrap {
+        width: 65%;
+    }
+}
+
+/*Botones*/
+.buttonWrap {
+    text-align: right;
+}
+
+.button {
+    padding-left: 25px;
+    padding-right: 25px;
+    font-size: 0.9rem;
+}
+
+/*Resumen*/
+.purchaseDates {
+    justify-content: space-between;
+    margin: 10px 0px;
+}
+
+.purchaseDates span,
+.ivaInfo {
+    font-size: 0.9rem;
+}
+
+.purchaseDates h5 {
+    font-size: 1.1rem;
+    margin: 5px 0px;
+}
+
+/*Carrito*/
+#productsCar {
+    padding: 20px 0px;
+}
+
+.productCar {
+    margin-bottom: 35px;
+    height: 100px;
+    display: flex;
+    height: 50px;
+}
+
+.imgProdCar img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.infoProdCar {
+    width: 100%;
+    padding-left: 5px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.infoProdCar h4{
+    width: 190px;
+}
+
+.infoWrap {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    width: 95%;
+}
+.imgProdCar {
+    width: 60px;
+}
+.inputCantProd {
+    border: none;
+    width: 35px;
+    height: 25px;
+    text-align: center;
+}
+
+.amountWrap button {
+    width: 25px;
+    border: none;
+    display: flex;
+    cursor: pointer;
+}
+
+button.removeProd {
+    width: 25px;
+    height: 25px;
+    background: transparent;
+    border: 0px;
+    cursor: pointer;
+}
+
+.inputsCar {
+    width: 95%;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    display: flex;
+}
+.inputsCar svg{
+    width: 25px;
+}
+.amountWrap{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+@media (min-width:768px) {
+    .infoProdCar {
+        flex-direction: row;
+        padding-left: 10px;
+        align-items: center;
+    }
+
+    .titleProd {
+        width: 35%;
+    }
+
+    .inputsCar {
+        width: 145px;
+    }
+
+    .productCar {
+        margin-bottom: 10px;
+    }
+
+    button.removeProd {
+        width: 23px;
+        height: 23px;
+    }
+
+    .amountWrap button {
+        width: 23px;
+    }
+
+    .infoWrap {
+        display: flex;
+        flex-direction: row;
+        width: 30%;
+    }
+}
+
+/*Información personal*/
+.formMain {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.rowForm {
+    width: 85%;
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+}
+.rowFull{
+    width: 100%; 
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+.rowSubmit {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.inputForm {
+    padding: 10px 10px 7px 10px;
+    text-align: center;
+    border-radius: 10px;
+    border: 1px solid var(--mainColor);
+    position: relative;
+    background: transparent;
+}
+
+.anclaLoginRegister {
+    cursor: pointer;
+    margin-top: 30px;
+    font-size: 1rem;
+}
+
+#loginForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#loginWrap .anclaLoginRegister {
+    margin-top: 0px !important;
+}
+
+.anclaPassLost {
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+.anclaPassLost a {
+    font-size: 0.9rem;
+}
+
+.rememberWrap {
+    width: 83%;
+    margin-bottom: 15px;
+}
+
+@media (min-width:768px) {
+    .formMain {
+        justify-content: space-between;
+    }
+
+    .rowForm {
+        width: 45%;
+    }
+
+    .anclaLoginRegister {
+        margin-top: 20px;
+    }
+
+    .rememberWrap {
+        width: 45%;
+        margin-bottom: 15px;
+    }
+}
+
+/*Remember*/
+.remWrap {
+    width: 100%;
+    text-align: start;
+}
+
+.remLabel {
+    font-size: 0.9rem;
+
+}
+
+/*Password*/
+.showPassword {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    border: none;
+    cursor: pointer;
+    bottom: 4px;
+}
+
+.showPassword svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/*Checkbox*/
+.checkWrap{
+    width: 100%;
+    margin-bottom: 20px;
+}
+.checkWrap a{
+    color: var(--mainColor);
+}
+.checkLabel{
+    font-size: 0.9rem;
+}
+
+/*Método de pago*/
+.paymentsWrap{
+    padding: 20px 0px;
+}
+.payment {
+    padding: 10px;
+}
+
+.payment img {
+    height: 25px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+#payments .rowSubmit {
+    margin-top: 50px;
+}
+
+/*Formulario*/
+.rowImport {
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+.rowImport * {
+    font-size: 1.5rem;
+}
+
+.rowImport input {
+    border: none;
+    font-weight: 600;
+    text-align: right;
+    width: 45%;
+    background: transparent;
+}
+
+.checkboxWrap {
+    margin-bottom: 30px;
+}
+
+.checkboxWrap label a {
+    color: var(--secondaryColor);
+}

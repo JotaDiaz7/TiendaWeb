@@ -2,7 +2,12 @@
 session_start();
 
 //Vamos a comprobar que todos los campos estén completados
-if ((isset($_POST["nombre"]) && empty($_POST["nombre"])) || (isset($_POST["email"]) && empty($_POST["email"])) || (isset($_POST["password"]) && empty($_POST["password"]))) {
+if ((isset($_POST["nombre"]) && empty($_POST["nombre"]))
+    || (isset($_POST["email"]) && empty($_POST["email"]))
+    || (isset($_POST["password"]) && empty($_POST["password"]))
+    || (isset($_POST["movil"]) && empty($_POST["movil"]))
+    || (isset($_POST["apellidos"]) && empty($_POST["apellidos"]))
+) {
     echo json_encode("empty");
     exit;
 }
@@ -23,14 +28,21 @@ $model = new UsuariosModel;
 $nombre = htmlspecialchars(trim($_POST["nombre"]));
 validarTexto($nombre, "nombre");
 
+//Si existe el campo apellidos
+$apellidos = "";
+if (isset($_POST["apellidos"])) {
+    $apellidos = htmlspecialchars(trim($_POST["apellidos"]));
+    validarTexto($apellidos, "apellidos");
+}
+
 //Creamos id, comprobando que no exista
 $found = true;
 
 while ($found) {
     $id = crearIdUsuario($nombre);
-    $check = $model -> comprobarId($con, $id);
+    $check = $model->comprobarId($con, $id);
 
-    if(!$check) {
+    if (!$check) {
         $found = false;
     }
 }
@@ -38,11 +50,18 @@ while ($found) {
 //Comprobamos email, su formato y que no exista ya
 $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
 validarEmail($email);
-$check = $model -> comprobarEmail($con, $email, $id);
+$check = $model->comprobarEmail($con, $email, $id);
 
-if($check) {
+if ($check) {
     echo json_encode("ExisteEmail");
     exit;
+}
+
+//Si existe el campo movil
+$movil = "";
+if (isset($_POST["movil"])) {
+    $movil = htmlspecialchars(trim($_POST["movil"]));
+    validarMovil($movil);
 }
 
 //Vamos a crear la fecha de registro
@@ -53,7 +72,7 @@ $password = htmlspecialchars(trim($_POST["password"]));
 validarPassword($password);
 
 //Comprobamos que hayan aceptado los términos y condiciones
-if ( empty($_POST["checkboxR"])){
+if (empty($_POST["checkboxR"])) {
     echo json_encode("checkbox");
     exit;
 }
@@ -62,15 +81,15 @@ if ( empty($_POST["checkboxR"])){
 $passwordEnc = password_hash($password, PASSWORD_DEFAULT);
 
 //Registramos al cliente
-$model -> registro($con, $id, $nombre, "", $email, $passwordEnc, $fechaReg, "", "", "", "");
+$model->registro($con, $id, $nombre, $apellidos, $email, $passwordEnc, $fechaReg, $movil, "", "", "");
 
 //Hacemos login
-$model -> login($con, $email, $password);
+$model->login($con, $email, $password);
 
 require '../carrito/login_carrito_controller.php';
 
 // Cerrar la conexión
-$con = null; 
+$con = null;
 
 echo json_encode("ok");
 exit;

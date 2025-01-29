@@ -14,7 +14,7 @@ class CarritoModel
             $stmt->bindValue(':cantidad', $cantidad);
             $stmt->execute();
         } catch (PDOException $e) {
-            header("Location: /error/Error en la consulta: " . $e->getMessage());
+            header("Location: /error?error=Error en la consulta: " . $e->getMessage());
             exit;
         }
     }
@@ -32,7 +32,7 @@ class CarritoModel
             $stmt->bindValue(':cantidad', $cantidad);
             $stmt->execute();
         } catch (PDOException $e) {
-            header("Location: /error/Error en la consulta: " . $e->getMessage());
+            header("Location: /error?error=Error en la consulta: " . $e->getMessage());
             exit;
         }
     }
@@ -49,7 +49,7 @@ class CarritoModel
             $stmt->bindValue(':talla', $talla);
             $stmt->execute();
         } catch (PDOException $e) {
-            header("Location: /error/Error en la consulta: " . $e->getMessage());
+            header("Location: /error?error=Error en la consulta: " . $e->getMessage());
             exit;
         }
     }
@@ -67,7 +67,7 @@ class CarritoModel
             $stmt->bindValue(':cantidad', $cantidad);
             $stmt->execute();
         } catch (PDOException $e) {
-            header("Location: /error/Error en la consulta: " . $e->getMessage());
+            header("Location: /error?error=Error en la consulta: " . $e->getMessage());
             exit;
         }
     }
@@ -83,7 +83,7 @@ class CarritoModel
 
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
-            header("Location: /error/Error en la consulta: " . $e->getMessage());
+            header("Location: /error?error=Error en la consulta: " . $e->getMessage());
             exit;
         }
     }
@@ -103,7 +103,7 @@ class CarritoModel
 
             return $result === false ? 0 : (int)$result["cantidad"];
         } catch (PDOException $e) {
-            header("Location: /error/Error en la consulta: " . $e->getMessage());
+            header("Location: /error?error=Error en la consulta: " . $e->getMessage());
             exit;
         }
     }
@@ -119,7 +119,7 @@ class CarritoModel
             $stmt->bindValue(':talla', $talla);
             $stmt->execute();
         } catch (PDOException $e) {
-            header("Location: /error/Error en la consulta: " . $e->getMessage());
+            header("Location: /error?error=Error en la consulta: " . $e->getMessage());
             exit;
         }
     }

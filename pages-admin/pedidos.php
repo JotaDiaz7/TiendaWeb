@@ -7,11 +7,13 @@ $con = conectar_db();
 
 seguridad(true, 1, $rol ?? -1);
 
-$urlA = '/admin/categorias';
-$numItemsPag = 8; //Limitamos los elementos que queremos que aparezcan
+$urlA = '/admin/pedidos';
+$numItemsPag = 7; //Limitamos los elementos que queremos que aparezcan
 
+//Vamos a llamar al controller para obtener los datos de los pedidos y su view
+require  '../controllers/pedidos/pedidos_controllers.php';
 //Obtenemos el número total de elementos
-$totalItems = contarCat($con);
+$totalItems = contar($con, "");
 
 require '../config/orderBuscarPag.php';
 
@@ -23,9 +25,9 @@ require '../config/orderBuscarPag.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/main.css">
-    <link rel="stylesheet" href="../styles/categorias.css">
+    <link rel="stylesheet" href="../styles/usuarios.css">
     <link rel="icon" href="../media/favicon.PNG">
-    <script type="module" src="/js/general.js"></script>
+    <script type="module" src="../js/usuarios.js"></script>
     <title>La madriguera</title>
 </head>
 
@@ -33,38 +35,38 @@ require '../config/orderBuscarPag.php';
     <?php include "../templates/header.php" ?>
     <main class="itemsCenter">
         <section>
-            <h1>Lista de categorías</h1>
+            <h1>Lista de pedidos</h1>
         </section>
         <section>
-            <div class="d-flex space-between">
-                <a href="/admin/registro-categoria" class="button">Añadir categoría</a>
+            <div class="filtro d-flex space-between align-center">
+                <div class="d-flex align-center">
+                    <p>Ordenar por fecha: </p>
+                    <a href="?order=ASC" class="button">A-Z</a>
+                    <a href="?order=DESC" class="button">Z-A</a>
+                </div>
                 <form method="get">
-                    <input type="text" name="buscar" class="inputForm" placeholder="Categoría">
+                    <input type="text" name="buscar" class="inputForm" placeholder="Pedido o usuario">
                     <input type="submit" class="button" value="Buscar">
                 </form>
             </div>
             <table>
                 <thead>
-                    <th>Categoría</th>
-                    <th>Padre</th>
-                    <th class="borrar">Estado</th>
-                    <th>Eliminar</th>
+                    <th>ID</th>
+                    <th>Usuario</th>
+                    <th>Estado</th>
+                    <th>Importe</th>
+                    <th>Fecha</th>
+                    <th class="editar">Editar</th>
+                    <th class="borrar">Cancelar</th>
                 </thead>
                 <tbody>
-                    <?php
-                    if (isset($buscar)) {
-                        buscar_categoria($con, $buscar);
-                    } else {
-                        listar_categorias($con, $inicio, $numItemsPag, $pagina);
-                    }
 
-                    ?>
                 </tbody>
             </table>
         </section>
         <?php include "../templates/paginacion.php" ?>
         <section>
-            <a href="/admin/administracion">Voler al panel de control</a>
+            <a href="/admin/administracion">Volver al panel de control</a>
         </section>
     </main>
     <?php include "../templates/alert.php" ?>

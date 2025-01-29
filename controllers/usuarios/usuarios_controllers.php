@@ -30,3 +30,12 @@ function contar($con)
     $num = $model -> contar($con);
     return $num;
 }
+
+function checkout_usuario($con, $usuario)
+{
+    require_once '../models/usuarios_models.php';
+    $model = new UsuariosModel;
+    $dates = $model -> getUsuario($con, $usuario);
+    $id = $usuario;
+    include '../views/checkout_data_usuario.php';
+}

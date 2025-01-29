@@ -12,5 +12,6 @@ function productos_usuario($con, $usuario)
 function productos_sesion($con, $productos){
     $carrito = $productos;
     require_once __DIR__ . '/../../models/productos_models.php';
+    global $precioProductos;
     include __DIR__ . '/../../views/data_carrito.php';
 }

@@ -1,0 +1,78 @@
+/*main*/
+main{
+    min-height: 110vh;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+@media (min-width: 767.98px) {
+    main{
+        min-height: 75vh;
+    }
+}
+@media (min-width: 993px) {
+    main{
+        min-height: 115vh;
+    }
+}
+
+/*Secciones*/
+section{
+    width: 95%;
+}
+@media (min-width: 767.98px) {
+    section{
+        width: 700px;
+    }
+}
+@media (min-width: 993px) {
+    section{
+        width: 900px;
+    }
+}
+
+/*Título*/
+h1{
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+h1 strong{
+    color: var(--secondaryColor);
+}
+@media (min-width: 767.98px) {
+    main h1{
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        text-align: left;
+    }
+}
+
+/**/
+.mainWrap p {
+    margin: 30px 0px;
+    font-weight: 500;
+    font-size: 1rem;
+    text-align: justify;
+    line-height: 1.5;
+}
+.mainWrap ul{
+    margin-left: 10px;
+}
+.mainWrap ul li{
+    margin: 10px 0px;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+.mainWrap ul strong, .nombre, .anclaContacto{
+    color: var(--mainColor);
+}
+.brand{
+    color: var(--mainColor);
+    font-family: var(--titleFont);
+}
+@media (min-width: 767.98px) {
+    .mainWrap ul li{
+        margin: 5px 0px;
+    }
+}

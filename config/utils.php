@@ -173,3 +173,18 @@ function crearIdCaract($texto)
 
     return $texto;
 }
+
+//Vamos a crear un fución que nos genere el id del pedido
+function crearIdPedido()
+{
+    $count = 1;
+    $id = "";
+
+    while ($count <= 8) {
+        $num = strval(rand(1, 9));
+        $id .= $num;
+        $count++;
+    }
+
+    return $id;
+}

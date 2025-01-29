@@ -19,16 +19,13 @@ function consultar_descuento($con, $descuento)
     include '../views/data_descuento.php';
 }
 
-function consultar_precio($con, $producto, $precioProd, $carrito)
+function consultar_precio($con, $producto, $precioProd)
 {
     require_once __DIR__ .'/../../models/descuentos_models.php';
     require_once __DIR__ .'/../../config/utils.php';
     $model = new DescuentosModel;
     $datesDesc = $model -> getDescuentoProducto($con, $producto);
     $precio = $precioProd;
-    if($carrito){
-        return calcular_descuento($datesDesc, $precio);
-    }else{
-        include __DIR__ .'/../../views/precio.php';
-    }
+    include __DIR__ .'/../../views/precio.php';
+    return $precio;
 }

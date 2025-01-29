@@ -104,7 +104,7 @@ class UsuariosModel
                 exit;
             }
         } catch (PDOException $e) {
-            header("Location: ../error/Ha habido un problema: " . $e->getMessage());
+            header("Location: /error?error=Error en la consulta: " . $e->getMessage());
             exit;
         }
     }
@@ -168,7 +168,7 @@ class UsuariosModel
     //Para obtener todos los usuarios
     public function listarUsuarios($con, $order, $inicio, $num)
     {
-        $order= $order == null ? 'fecha_registro DESC' : 'nombre '.$order;
+        $order = $order == null ? 'fecha_registro DESC' : 'nombre ' . $order;
         $sql = "SELECT id, nombre, apellidos, email, movil, ciudad, provincia, direccion, rol, activo 
         FROM usuarios ORDER BY $order LIMIT $inicio, $num";
 
@@ -178,7 +178,7 @@ class UsuariosModel
 
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
-            header("Location: /error/Error en la consulta: " . $e->getMessage());
+            header("Location: /error?error=Error en la consulta: " . $e->getMessage());
             exit;
         }
     }
@@ -230,7 +230,7 @@ class UsuariosModel
 
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
-            header("Location: /error/Error en la consulta: " . $e->getMessage());
+            header("Location: /error?error=Error en la consulta: " . $e->getMessage());
             exit;
         }
     }
@@ -247,29 +247,28 @@ class UsuariosModel
 
             return $result['count'];
         } catch (PDOException $e) {
-            header("Location: /error/Error en la consulta: " . $e->getMessage());
+            header("Location: /error?error=Error en la consulta: " . $e->getMessage());
             exit;
         }
     }
 
-        //Para recuperar la contraseña
-        public function recuperarPassword($con, $email, $nombre, $apellidos)
-        {
-            $sql = "SELECT id FROM usuarios WHERE email = :email AND nombre = :nombre AND apellidos = :apellidos";
-            try {
-                $stmt = $con->prepare($sql);
-                $stmt->bindParam(':email', $email);
-                $stmt->bindParam(':nombre', $nombre);
-                $stmt->bindParam(':apellidos', $apellidos);
-                $stmt->execute();
-                
-                $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    //Para recuperar la contraseña
+    public function recuperarPassword($con, $email, $nombre, $apellidos)
+    {
+        $sql = "SELECT id FROM usuarios WHERE email = :email AND nombre = :nombre AND apellidos = :apellidos";
+        try {
+            $stmt = $con->prepare($sql);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':nombre', $nombre);
+            $stmt->bindParam(':apellidos', $apellidos);
+            $stmt->execute();
 
-                return $result["id"] ?? false;
-    
-            } catch (PDOException $e) {
-                echo json_encode("ErrorConsulta: " . $e->getMessage());
-                exit;
-            }
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return $result["id"] ?? false;
+        } catch (PDOException $e) {
+            echo json_encode("ErrorConsulta: " . $e->getMessage());
+            exit;
         }
+    }
 }

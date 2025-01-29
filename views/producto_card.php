@@ -12,9 +12,7 @@ if (!empty($dates)) {
                 </div>
                 <div class="infoWrap">
                     <h3 class="title"><?= $date['nombre']; ?></h3>
-                    <div class="precioWrap itemsCenter">
-                        <?php consultar_precio($con, $date["id"], $date['precio'], false) ?>
-                    </div>
+                    <?php consultar_precio($con, $date["id"], $date['precio']) ?>
                 </div>
             </a>
         </div>

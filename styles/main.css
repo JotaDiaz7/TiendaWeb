@@ -376,11 +376,15 @@ div#menuFooterWrap {
 #carShop .mainPrice{
     font-size: 1.5em;
 }
-#carShop .precio{
+.precio{
     font-size: 1.2em;
+    margin-right: 10px;
 }
-#carShop .precioOriginal{
-    display: none;
+.precioOriginal{
+    text-decoration:line-through;
+    color: var(--descuento);
+    margin-right: 7px;
+    font-size: 0.85em;
 }
 #carShop .buttonShopWrap{
     height: 40px;

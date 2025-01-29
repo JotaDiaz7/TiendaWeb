@@ -18,7 +18,13 @@
     <?php
     } else {
         productos_sesion($con, $carrito);
-    }
     ?>
+        <div id="infoCar">
+            <div class="mainPriceWrap">
+                <span class="mainPrice"><?= $precioProductos ?>€</span>
+            </div>
+            <a href="/checkout" rel="nofollow" class="itemsCenter buttonShopWrap button">Comprar</a>
+        </div>
+    <?php } ?>
 
 </div>

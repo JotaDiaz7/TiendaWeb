@@ -18,7 +18,7 @@ function obetener_min_talla($con, $producto)
 
 function obtener_stock_talla($con, $producto, $talla)
 {
-    require_once '../../models/prod_nums_models.php';
+    require_once __DIR__ .'/../../models/prod_nums_models.php';
     $model = new ProdNumsModel;
     $dates = $model -> getStockTalla($con, $producto, $talla);
     return $dates;

@@ -1,6 +1,6 @@
 <ul id="productsCar">
     <?php
-    $precioTotal = 0;
+    $precioProductos = 0;
     $modelP = new ProductosModel;
 
     foreach ($carrito as $item) {
@@ -8,8 +8,7 @@
 
         $producto = $modelP->getProducto($con, $idProd);
         $nombre = formatearNombre($producto['nombre']);
-        $talla = $item['talla'] > 1 ? "/talla-" . $item['talla'] : "";//Si la talla es mayor a uno es calzado
-        $precio = consultar_precio($con, $idProd, $producto['precio'], true);
+        $talla = $item['talla'] > 1 ? "/talla-" . $item['talla'] : ""; //Si la talla es mayor a uno es calzado
     ?>
         <li class="productCar">
             <a href="/producto/<?= $idProd ?>/<?= $nombre ?><?= $talla ?>" class="imgProdCar itemsCenter">
@@ -17,7 +16,10 @@
             </a>
             <div class="infoProdCar">
                 <h4><a href="/producto/<?= $idProd ?>/<?= $nombre ?><?= $talla ?>" class="titleProd"><?= $producto['nombre']; ?></a></h4>
-                <span class="precio"><?= $precio ?>€</span>
+                <?php
+                //Consultamos el precio para saber si tiene o no descuento, y además poner su view
+                $precio = consultar_precio($con, $idProd, $producto['precio']);
+                ?>
                 <span class="sizeProd"><?php if ($item['talla'] > 0) { ?> Talla: <?= $item['talla'];} ?></span>
                 <div class="inputsCar">
                     <a href="/controllers/carrito/borrar_controller.php?producto=<?= $idProd ?>&talla=<?= $item['talla'] ?>" class="removeProd">
@@ -55,13 +57,7 @@
         </li>
     <?php
 
-        $precioTotal += $precio * $item['cantidad'];
+        $precioProductos += $precio * $item['cantidad'];
     }
     ?>
 </ul>
-<div id="infoCar">
-    <div class="mainPriceWrap">
-        <span class="mainPrice"><?= $precioTotal ?>€</span>
-    </div>
-    <a href="/checkout" rel="nofollow" class="itemsCenter buttonShopWrap button">Comprar</a>
-</div>

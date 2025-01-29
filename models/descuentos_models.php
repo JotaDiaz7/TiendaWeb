@@ -48,7 +48,7 @@ class DescuentosModel
 
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
-            header("Location: /error/Error en la consulta: " . $e->getMessage());
+            header("Location: /error?error=Error en la consulta: " . $e->getMessage());
             exit;
         }
     }
@@ -66,7 +66,7 @@ class DescuentosModel
 
             return $stmt->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
-            header("Location: /error/Error en la consulta: " . $e->getMessage());
+            header("Location: /error?error=Error en la consulta: " . $e->getMessage());
             exit;
         }
     }
@@ -89,7 +89,7 @@ class DescuentosModel
 
             return $stmt->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
-            header("Location: /error/Error en la consulta: " . $e->getMessage());
+            header("Location: /error?error=Error en la consulta: " . $e->getMessage());
             exit;
         }
     }
@@ -112,7 +112,7 @@ class DescuentosModel
 
             return $stmt->rowCount() > 0;
         } catch (PDOException $e) {
-            header("Location: /error/Error en la consulta: " . $e->getMessage());
+            header("Location: /error?error=Error en la consulta: " . $e->getMessage());
             exit;
         }
     }
@@ -128,7 +128,7 @@ class DescuentosModel
 
             return $stmt->rowCount() > 0;
         } catch (PDOException $e) {
-            header("Location: /error/Error en la consulta: " . $e->getMessage());
+            header("Location: /error?error=Error en la consulta: " . $e->getMessage());
             exit;
         }
     }
@@ -144,7 +144,7 @@ class DescuentosModel
 
             return $stmt->rowCount() > 0;
         } catch (PDOException $e) {
-            header("Location: /error/Error en la consulta: " . $e->getMessage());
+            header("Location: /error?error=Error en la consulta: " . $e->getMessage());
             exit;
         }
     }
@@ -162,7 +162,7 @@ class DescuentosModel
 
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
-            header("Location: /error/Error en la consulta: " . $e->getMessage());
+            header("Location: /error?error=Error en la consulta: " . $e->getMessage());
             exit;
         }
     }

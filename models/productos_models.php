@@ -63,11 +63,10 @@ class ProductosModel
                 exit;
             }
         } catch (PDOException $e) {
-            header("Location: ../error/Ha habido un problema: " . $e->getMessage());
+            header("Location: /error?error=Error en la consulta: " . $e->getMessage());
             exit;
         }
     }
-
 
     //Para actualizar los datos del producto
     public function updateProducto($con, $id, $img1, $img2, $img3, $img4, $categoria, $nombre, $precio, $descripcion, $descuento)
@@ -119,7 +118,7 @@ class ProductosModel
 
             return $stmt->rowCount() > 0;
         } catch (PDOException $e) {
-            header("Location: /error/Error en la consulta: " . $e->getMessage());
+            header("Location: /error?error=Error en la consulta: " . $e->getMessage());
             exit;
         }
     }
@@ -136,7 +135,7 @@ class ProductosModel
 
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
-            header("Location: /error/Error en la consulta: " . $e->getMessage());
+            header("Location: /error?error=Error en la consulta: " . $e->getMessage());
             exit;
         }
     }
@@ -154,7 +153,7 @@ class ProductosModel
 
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
-            header("Location: /error/Error en la consulta: " . $e->getMessage());
+            header("Location: /error?error=Error en la consulta: " . $e->getMessage());
             exit;
         }
     }
@@ -171,7 +170,7 @@ class ProductosModel
 
             return $stmt->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
-            header("Location: /error/Error en la consulta: " . $e->getMessage());
+            header("Location: /error?error=Error en la consulta: " . $e->getMessage());
             exit;
         }
     }
@@ -195,13 +194,13 @@ class ProductosModel
 
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
-            header("Location: /error/Error en la consulta: " . $e->getMessage());
+            header("Location: /error?error=Error en la consulta: " . $e->getMessage());
             exit;
         }
     }
 
     //Vamos a obtener los productos según categoría
-    public function buscarProductoUsuario($con, $busqueda,$categoria)
+    public function buscarProductoUsuario($con, $busqueda, $categoria)
     {
         $sql = "
                 SELECT p.*
@@ -218,7 +217,7 @@ class ProductosModel
 
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
-            header("Location: /error/Error en la consulta: " . $e->getMessage());
+            header("Location: /error?error=Error en la consulta: " . $e->getMessage());
             exit;
         }
     }
@@ -226,21 +225,41 @@ class ProductosModel
     //Vamos a obtener el número total de productos
     public function contar($con, $categoria)
     {
-        if(empty($categoria)){
-            $sql = "SELECT count(*) as count FROM productos";
-        }else{
-            $sql = "SELECT count(*) as count FROM productos WHERE categoria = :categoria";
+        if (empty($categoria)) {
+            $sql = "SELECT count(*) as count FROM productos WHERE activo = 1";
+        } else {
+            $sql = "SELECT count(*) as count FROM productos p
+                LEFT JOIN categorias c ON p.categoria = c.id
+                WHERE (p.categoria = :categoria OR c.padre = :categoria)
+                AND p.activo = 1";
         }
         try {
             $stmt = $con->prepare($sql);
-            if(!empty($categoria)) $stmt->bindParam(':categoria', $categoria);
+            if (!empty($categoria)) $stmt->bindParam(':categoria', $categoria);
             $stmt->execute();
 
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
             return $result['count'];
         } catch (PDOException $e) {
-            header("Location: /error/Error en la consulta: " . $e->getMessage());
+            header("Location: /error?error=Error en la consulta: " . $e->getMessage());
+            exit;
+        }
+    }
+
+    //Para aumentar las ventas del producto
+    public function aumentarVentas($con, $id, $cantidad)
+    {
+        $sql = "UPDATE productos SET ventas = :cantidad + ventas WHERE id = :id";
+        try {
+            $stmt = $con->prepare($sql);
+            $stmt->bindParam(':cantidad', $cantidad);
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+
+            return $stmt->rowCount() > 0;
+        } catch (PDOException $e) {
+            header("Location: /error?error=Error en la consulta: " . $e->getMessage());
             exit;
         }
     }

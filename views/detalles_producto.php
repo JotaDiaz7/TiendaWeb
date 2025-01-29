@@ -1,27 +1,28 @@
 <div id="detailsWrap">
     <h1 id="titleProduct"><?= $dates['nombre']; ?></h1>
     <div class="detailWrap">
-        <?php consultar_precio($con, $id, $dates['precio'], false) ?>
+        <?php consultar_precio($con, $id, $dates['precio']) ?>
     </div>
-    <?php if (!empty($stocks)) { ?>
-        <div class="detailWrap">
-            <?php if ($calzado) { ?>
-                <h3>Talla</h3>
-                <div id="sizeWrap" class="d-flex">
-                    <?php
-                            $nombre = formatearNombre($dates['nombre']);
-                            foreach ($stocks as $stock) {
-                            ?>
-                <span class="buttonSizeWrap <?php if ($stock['talla'] == $talla) { ?> selectedSize<?php  } ?>">
-                    <a data-stock="<?= $stock['stock']; ?>" href="/producto/<?= $id ?>/<?= $nombre ?>/talla-<?= $stock['talla']; ?>"
-                        class="buttonSize alignCenter">
-                        <?= $stock['talla']; ?>
-                    </a>
-                </span>
-            <?php } ?> 
-                </div>
-            <?php } ?>
-        </div>
+    <div class="detailWrap">
+        <?php if ($calzado) { ?>
+            <h3>Talla</h3>
+            <div id="sizeWrap" class="d-flex">
+                <?php
+                $nombre = formatearNombre($dates['nombre']);
+                foreach ($stocks as $stock) {
+                ?>
+                    <span class="buttonSizeWrap <?php if ($stock['talla'] == $talla) { ?> selectedSize<?php  } ?>">
+                        <a data-stock="<?= $stock['stock']; ?>" href="/producto/<?= $id ?>/<?= $nombre ?>/talla-<?= $stock['talla']; ?>"
+                            class="buttonSize alignCenter">
+                            <?= $stock['talla']; ?>
+                        </a>
+                    </span>
+                <?php } ?>
+            </div>
+        <?php } ?>
+    </div>
+    <?php if (empty($stocks) || $stockTalla > 0) { 
+        ?>
         <form id="productForm" method="post">
             <input type="hidden" name="id" id="idProduct" value="<?= $id ?>">
             <input type="hidden" name="talla" id="sizeProduct" value="<?= $talla ?>">

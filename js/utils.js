@@ -123,12 +123,12 @@ export function menuMov() {
         button.onclick = () => {
             let cat = button.getAttribute("data-cat")
 
-            uls.forEach(ul =>{
+            uls.forEach(ul => {
                 let catUl = ul.getAttribute("data-cat")
 
-                if(catUl == cat){
+                if (catUl == cat) {
                     ul.classList.contains("showList") ? ul.classList.remove("showList") : ul.classList.add("showList")
-                }else{
+                } else {
                     ul.classList.remove("showList")
                 }
             })
@@ -175,15 +175,8 @@ function borrarProdCart() {
 
             await setDataSec(button.href)
 
-            let url = window.location.href;
+            urlCart()
 
-            // Verifica si la URL ya contiene un `?` y lo elimina
-            if (url.includes("?")) {
-                url = url.split("?")[0];
-            }
-
-            // Redirige a la nueva URL con `?cart`
-            window.location.href = url + "?cart";
         }
     })
 }
@@ -196,12 +189,8 @@ function sumarProdCart() {
             e.preventDefault()
 
             await setDataSec(button.href)
+            urlCart()
 
-            let url = window.location.href
-
-            if (url.includes("?")) url = url.split("?")[0]
-            
-            window.location.href = url + "?cart"
         }
     })
 }
@@ -216,11 +205,23 @@ function restarProdCart() {
 
             await setDataSec(button.href)
 
-            let url = window.location.href
+            urlCart()
 
-            if (url.includes("?")) url = url.split("?")[0]
-            
-            window.location.href = url + "?cart"
         }
     })
+}
+
+function urlCart(){
+    let url = window.location.href;
+
+    if (!url.includes("checkout")) {//Para todas las páginas, menos para la de checkout
+        // Verifica si la URL ya contiene un `?` y lo elimina
+        if (url.includes("?")) {
+            url = url.split("?")[0]
+        }
+        // Redirige a la nueva URL con `?cart`
+        window.location.href = url + "?cart"
+    }else{
+        window.location.reload()
+    }
 }

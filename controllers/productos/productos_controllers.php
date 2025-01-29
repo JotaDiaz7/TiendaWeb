@@ -17,11 +17,13 @@ function consultar_producto($con, $id)
 
 function plantilla_producto($con, $id, $esCalzado, $stockProd, $tallaProd){
     require_once '../models/productos_models.php';
+    require_once '../controllers/prod_nums/prod_nums_controller.php';
     $model = new ProductosModel;
     $dates = $model -> getProducto($con, $id);
     $calzado = $esCalzado;
     $stocks = $stockProd;
     $talla = $tallaProd;
+    $stockTalla = obtener_stock_talla($con, $id, $talla);
     include '../views/img_productos.php';
     include '../views/detalles_producto.php';
 }

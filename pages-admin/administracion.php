@@ -51,7 +51,7 @@ seguridad(true, 1, $rol ?? -1);
                 </a>
             </div>
             <div class="iconMenuCuenta">
-                <a href="/admin/pedidos.php" class="alignCenter">
+                <a href="/admin/pedidos" class="alignCenter">
                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M10.5 14L17 14" stroke="#222222" stroke-width="1.5" stroke-linecap="round" />
                         <path d="M7 14H7.5" stroke="#222222" stroke-width="1.5" stroke-linecap="round" />

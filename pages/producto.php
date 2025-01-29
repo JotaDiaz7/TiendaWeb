@@ -32,7 +32,7 @@ $stock = $model->getStock($con, $idProd);
 $check = $model->comprobarTalla($con, $idProd, $talla);
 
 if (!$check) {
-    header("Location: /error/Pero, aun no se le ha asignado ningún stock a este producto o la talla es incorrecta.");
+    header("Location: /error?error= Aun no se le ha asignado ningún stock a este producto o la talla es incorrecta.");
     exit;
 }
 
@@ -45,7 +45,7 @@ if (!$check) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/main.css">
     <link rel="stylesheet" href="/styles/producto.css">
-    <link rel="icon" href="../media/favicon.PNG">
+    <link rel="icon" href="/media/favicon.PNG">
     <script type="module" src="/js/producto.js"></script>
     <title>La madriguera</title>
 </head>
