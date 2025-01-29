@@ -1,5 +1,4 @@
 <?php
-
 require '../config/enlaces.php';
 
 //Establecemos conexión
@@ -7,17 +6,15 @@ $con = conectar_db();
 
 seguridad(true, 1, $rol ?? -1);
 
-//Vamos a llamar al controller para obtener los datos del productos y su view
-require '../controllers/productos/productos_controllers.php';
+//Vamos a llamar al controller para obtener los datos del pedido y su view
+require '../controllers/pedidos/pedidos_controllers.php';
 
 if (empty($_GET["id"])) {
-    header("/");
+    header("/error?error=Pedido no encontrado.");
     exit;
-} else {
-    $id = $_GET["id"];
-}
-
-
+} 
+    
+$pedido = $_GET["id"];
 
 ?>
 <!DOCTYPE html>
@@ -27,7 +24,7 @@ if (empty($_GET["id"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/main.css">
-    <link rel="stylesheet" href="/styles/registro-admin.css">
+    <link rel="stylesheet" href="/styles/operacion.css">
     <link rel="icon" href="/media/favicon.PNG">
     <script type="module" src="/js/registro-admin.js"></script>
     <title>La madriguera</title>
@@ -37,15 +34,16 @@ if (empty($_GET["id"])) {
     <?php include "../templates/header.php" ?>
     <main class="itemsCenter">
         <section>
-            <h1>Producto <strong><?= $id ?></strong></h1>
-        </section>
-        <section class="mainWrap d-flex">
-            <div id="wrapDates">
-                <?php consultar_producto($con, $id) ?>
+            <div class="d-flex titleWrap">
+                <h1>Pedido <span class="idPedido"><?= $pedido ?></span></h1>
             </div>
+            <?php consultar_estado($con, $pedido) ?>
+        </section>
+        <section class="mainWrap">
+            <?php consultar_pedido($con, $pedido) ?>
         </section>
         <section>
-            <a id="delete" href="/admin/productos">Ver todos los productos</a>
+            <a id="returnPedidos" href="/admin/pedidos">Ver todos los pedidos</a>
         </section>
     </main>
     <?php include "../templates/alert.php" ?>

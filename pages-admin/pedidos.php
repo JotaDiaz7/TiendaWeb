@@ -8,7 +8,7 @@ $con = conectar_db();
 seguridad(true, 1, $rol ?? -1);
 
 $urlA = '/admin/pedidos';
-$numItemsPag = 7; //Limitamos los elementos que queremos que aparezcan
+$numItemsPag = 10; //Limitamos los elementos que queremos que aparezcan
 
 //Vamos a llamar al controller para obtener los datos de los pedidos y su view
 require  '../controllers/pedidos/pedidos_controllers.php';
@@ -27,7 +27,7 @@ require '../config/orderBuscarPag.php';
     <link rel="stylesheet" href="../styles/main.css">
     <link rel="stylesheet" href="../styles/usuarios.css">
     <link rel="icon" href="../media/favicon.PNG">
-    <script type="module" src="../js/usuarios.js"></script>
+    <script type="module" src="../js/general.js"></script>
     <title>La madriguera</title>
 </head>
 
@@ -41,8 +41,8 @@ require '../config/orderBuscarPag.php';
             <div class="filtro d-flex space-between align-center">
                 <div class="d-flex align-center">
                     <p>Ordenar por fecha: </p>
-                    <a href="?order=ASC" class="button">A-Z</a>
-                    <a href="?order=DESC" class="button">Z-A</a>
+                    <a href="?order=ASC" class="button">Antiguos</a>
+                    <a href="?order=DESC" class="button">Recientes</a>
                 </div>
                 <form method="get">
                     <input type="text" name="buscar" class="inputForm" placeholder="Pedido o usuario">
@@ -60,7 +60,13 @@ require '../config/orderBuscarPag.php';
                     <th class="borrar">Cancelar</th>
                 </thead>
                 <tbody>
-
+                    <?php
+                    if (isset($buscar)) {
+                        buscar_pedido($con, $buscar);
+                    } else {
+                        listar_pedidos($con, $order, $inicio, $numItemsPag);
+                    }
+                    ?>
                 </tbody>
             </table>
         </section>

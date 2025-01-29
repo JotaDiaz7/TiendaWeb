@@ -226,8 +226,6 @@ class UsuariosModel
             $stmt->bindValue(':busqueda', "%$busqueda%");
             $stmt->execute();
 
-
-
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             header("Location: /error?error=Error en la consulta: " . $e->getMessage());

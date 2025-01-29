@@ -26,7 +26,7 @@ if ($idAdmin == $id) {
 $estado = htmlspecialchars(trim($_GET["estado"]));
 
 //Actualizamos los datos
-$result = $model->estadoUsuario($con, $id, $estado);
+$model->estadoUsuario($con, $id, $estado);
 
 // Cerrar la conexión
 $con = null;

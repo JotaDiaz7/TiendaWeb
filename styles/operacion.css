@@ -1,0 +1,209 @@
+/*main*/
+main{
+    margin: 70px 0px;
+    flex-direction: column;
+}
+
+/*Secciones*/
+section{
+    width: 90%;
+}
+.container{
+    width: 100%;
+    min-height: 150px;
+    margin-bottom: 50px;
+}
+
+@media (min-width: 767.98px) {
+    section{
+        width: 700px;
+    }
+}
+@media (min-width: 993px) {
+    section{
+        width: 900px;
+    }
+}
+
+/*Título*/
+.titleWrap{
+    justify-content: space-between;
+    margin-bottom: 30px;
+    flex-direction: column;
+}
+h1{
+    font-size: 2rem;
+    text-align: left;
+    margin-bottom: 20px;
+}
+h1 span{
+    color: var(--mainColor);
+}
+main h3{
+    margin-bottom: 15px;
+    padding-left: 4%;
+}
+.mb30{
+    margin-bottom: 30px;
+
+}
+#returnPedidos{
+    display: inline-block;
+}
+#returnPedidos:hover{
+    color: var(--mainColor);
+}
+@media (min-width: 767.98px) {
+    main h1{
+        font-size: 2.5rem;
+        margin-bottom: 0px;
+    }
+    .titleWrap{
+        align-items: center;
+        flex-direction: row;
+    }
+}
+
+/*Productos*/
+.product{
+    margin-bottom: 35px;
+    height: 75px;
+}
+.imgProdCar img{
+    width: 100px;
+    object-fit: contain;
+}
+.infoProd{
+    width: 100%;
+    padding: 0px 5px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.sizeProd{
+    font-size: 1.1em;
+}
+.priceProdWrap{
+    width: 80%;
+    justify-content: space-between;
+    font-size: 1.1em;
+}
+
+@media (min-width:768px) {
+    .infoProd{
+        flex-direction: row;
+        padding-left: 30px;
+        align-items: center;
+    }
+    .product{
+        height: auto;
+        margin-bottom: 10px;
+    }
+    .priceProdWrap{
+        width: 25%;
+    }
+    .product h4{
+        width: 35%;
+    }
+}
+
+/*Envío*/
+#name, #correo, #movil,.direcWrap{
+    margin-bottom: 15px;
+}
+.direcWrap{
+    width: 85%;
+    max-width: 90%;
+    align-items: center;
+    flex-wrap: wrap;
+    min-height: 50px;
+}
+.direcWrap span{
+    margin-right: 15px;
+}
+.direccion{
+    width: 100%;
+}
+@media (min-width:768px) {
+    .direcWrap{
+        width: 95%;
+    }
+}
+@media (min-width:998px) {
+    .direcWrap{
+        width: 95%;
+    }
+    .direcWrap span{
+        margin-right: 25px;
+    }
+}
+
+/*Pago*/
+.rowPago{
+    margin-bottom: 15px;
+}
+
+/*Devolución*/
+#anclaDev{
+    color: var(--secondaryColor);
+}
+
+/*Factura*/
+#factura{
+    border: none;
+    background: transparent;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+/*Estado*/
+#estadoWrap  > :nth-child(-n+2){
+    width: 50%;
+}
+.estados{
+    position: relative;
+    width: 100px;
+    margin-right: 10px;
+}
+.estados ul{
+    position: absolute;
+    max-height: 25px;
+    overflow: hidden;
+    background-color: white;
+    transition: all 0.5s ease;
+}
+.estados ul li{
+    padding: 0px 5px;
+    padding-bottom: 10px;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+.estados:hover ul{
+    max-height: 200px;
+    border: 1px solid grey;
+    border-radius: 10px;
+}
+.estado{
+    border-radius: 99px;
+    width: 20px;
+    height: 20px;
+    display: block;
+    margin-right: 5px;
+    margin-top: 1px;
+}
+.Pendiente.estado{
+    background-color: red;
+}
+.Preparando.estado{
+    background-color: orange;
+}
+.Enviado.estado{
+    background-color: green;
+}
+.Devolución.estado{
+    background-color: brown;
+}
+.Entregado.estado, .Recibido.estado{
+    display: none !important;
+}
