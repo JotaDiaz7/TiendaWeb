@@ -4,7 +4,7 @@ require '../config/enlaces.php';
 //Establecemos conexión
 $con = conectar_db();
 
-seguridad(true, 1, $rol ?? -1);
+seguridad(true, 0, $rol ?? -1);
 
 //Vamos a llamar al controller para obtener los datos del pedido y su view
 require '../controllers/pedidos/pedidos_controllers.php';
@@ -26,7 +26,7 @@ $pedido = $_GET["id"];
     <link rel="stylesheet" href="/styles/main.css">
     <link rel="stylesheet" href="/styles/operacion.css">
     <link rel="icon" href="/media/favicon.PNG">
-    <script type="module" src="/js/registro-admin.js"></script>
+    <script type="module" src="/js/general.js"></script>
     <title>La madriguera</title>
 </head>
 
@@ -43,7 +43,7 @@ $pedido = $_GET["id"];
             <?php consultar_pedido($con, $pedido) ?>
         </section>
         <section>
-            <a id="returnPedidos" href="/admin/pedidos">Ver todos los pedidos</a>
+            <a id="returnPedidos" href="/pedidos">Ver todos mis pedidos</a>
         </section>
     </main>
     <?php include "../templates/alert.php" ?>

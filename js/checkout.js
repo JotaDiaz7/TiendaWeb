@@ -167,12 +167,22 @@ function login() {
 
 function butonsPago() {
     const radios = document.querySelectorAll("input[type=radio")
+    const buttonWraps = document.querySelectorAll(".buttonPayWrap")
     let check = false;
 
     radios.forEach(input => {
         if (input.checked) {
             check = true;
             document.getElementById("metodoPago").value = input.id
+
+            buttonWraps.forEach(wrap => {
+                let name = wrap.getAttribute("name")
+                if(input.id == name){
+                    wrap.classList.remove("d-none")
+                }else{
+                    wrap.classList.add("d-none")
+                }
+            })
         }
     })
     return check
@@ -187,7 +197,6 @@ function prueba(){
             e.preventDefault()
 
             let dates = await setData("/controllers/pedidos/registro_controller.php", form);
-
             window.location.href = '/compra/'+dates;
         }
     }

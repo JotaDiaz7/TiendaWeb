@@ -44,11 +44,9 @@ paypal.Buttons({
 
     onApprove: function (data, actions) {
         if (actions.order && typeof actions.order.capture === "function") {
-            return actions.order.capture().then(function (details) {
-
-                let dates = setData("/controllers/pedidos/registro_controller.php", form);
-
-                window.location.href = '/compra/'+dates;
+            return actions.order.capture().then(async function (details) {
+                let dates = await setData("/controllers/pedidos/registro_controller.php", form);
+                window.location.href = '/compra/' + dates;
             });
         } else {
             console.error("Order capture method not available.");

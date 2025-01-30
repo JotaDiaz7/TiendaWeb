@@ -92,14 +92,20 @@ class PedidosModel
     }
 
     //Para obtener los pedidos
-    public function listarPedidos($con, $order, $inicio, $num)
+    public function listarPedidos($con, $order, $inicio, $num, $usuario)
     {
         $order = $order == null ? 'DESC' : $order;
-        $sql = "SELECT * 
-        FROM pedidos ORDER BY fecha $order LIMIT $inicio, $num";
+        if ($usuario == "") {
+            $sql = "SELECT * FROM pedidos ORDER BY fecha $order LIMIT $inicio, $num";
+        } else {
+            $sql = "SELECT * FROM pedidos WHERE usuario = :usuario ORDER BY fecha $order LIMIT $inicio, $num";
+        }
 
         try {
             $stmt = $con->prepare($sql);
+            if ($usuario != "") {
+                $stmt->bindParam(':usuario', $usuario);
+            }
             $stmt->execute();
 
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -110,11 +116,18 @@ class PedidosModel
     }
 
     //Vamos a obtener el número total de pedidos
-    public function contar($con)
+    public function contar($con, $usuario)
     {
-        $sql = "SELECT count(*) as count FROM pedidos";
+        if(empty($usuario)){
+            $sql = "SELECT count(*) as count FROM pedidos";
+        }else{
+            $sql = "SELECT count(*) as count FROM pedidos WHERE usuario = :usuario";
+        }
         try {
             $stmt = $con->prepare($sql);
+            if(!empty($usuario)){
+                $stmt->bindValue(':usuario', $usuario);
+            }
             $stmt->execute();
 
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -169,7 +182,7 @@ class PedidosModel
         }
     }
 
-    //Para cambiar el estado al producto
+    //Para cambiar el estado del pedido
     public function cambiarEstado($con, $id, $estado): bool
     {
         $sql = "UPDATE pedidos SET estado = :estado WHERE id = :id";
@@ -180,6 +193,28 @@ class PedidosModel
             $stmt->execute();
 
             return $stmt->rowCount() > 0;
+        } catch (PDOException $e) {
+            header("Location: /error?error=Error en la consulta: " . $e->getMessage());
+            exit;
+        }
+    }
+
+    //Para eliminar el pedido
+    public function eliminarPedido($con, $id): bool
+    {
+        $sql1 = "DELETE FROM linea_pedido WHERE pedido = :id";
+        $sql2 = "DELETE FROM pedidos WHERE id = :id";
+        try {
+            $stmt1 = $con->prepare($sql1);
+            $stmt2 = $con->prepare($sql2);
+
+            $stmt1->bindParam(':id', $id);
+            $stmt2->bindParam(':id', $id);
+
+            $stmt1->execute();
+            $stmt2->execute();
+
+            return $stmt2->rowCount() > 0;
         } catch (PDOException $e) {
             header("Location: /error?error=Error en la consulta: " . $e->getMessage());
             exit;

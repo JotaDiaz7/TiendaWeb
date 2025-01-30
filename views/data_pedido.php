@@ -25,7 +25,7 @@
         <p><?= $dates['fecha']; ?></p>
         <p><?= $dates['hora']; ?></p>
     </div>
-    <div class="rowPago d-flex space-end">
+    <div class="rowPago">
         <span><?= $dates['metodo_pago']; ?></span>
         <h2><?= $dates['importe']; ?>€</h2>
     </div>

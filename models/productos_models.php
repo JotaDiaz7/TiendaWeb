@@ -263,4 +263,21 @@ class ProductosModel
             exit;
         }
     }
+
+    //Para disminuir las ventas del producto
+    public function disminuirVentas($con, $id, $cantidad)
+    {
+        $sql = "UPDATE productos SET ventas = ventas - :cantidad WHERE id = :id";
+        try {
+            $stmt = $con->prepare($sql);
+            $stmt->bindParam(':cantidad', $cantidad);
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+
+            return $stmt->rowCount() > 0;
+        } catch (PDOException $e) {
+            header("Location: /error?error=Error en la consulta: " . $e->getMessage());
+            exit;
+        }
+    }
 }

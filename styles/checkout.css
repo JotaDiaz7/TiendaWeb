@@ -379,6 +379,19 @@ button.removeProd {
     margin-top: 50px;
 }
 
+.buttonStripe{
+    border-radius: 99px;
+    height: 60px;
+    border: none;
+    width: 100%;
+    background-color: #a29ef2;
+    cursor: pointer;
+    margin-top: 20px;
+}
+.buttonStripe img{
+    width: 100px;
+}
+
 /*Formulario*/
 .rowImport {
     margin-top: 50px;

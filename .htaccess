@@ -8,21 +8,17 @@ RewriteCond %{REQUEST_FILENAME} !-d
 # Regla de reescritura para los producto
 RewriteRule ^producto/([a-zA-Z0-9]+)/([a-zA-Z0-9-]+)(?:/talla-([0-9]+))?$ pages/producto.php?id=$1&nombre=$2&talla=$3 [L,QSA,NC]
 
-# Regla de reescritura para los pedidos
-RewriteRule ^pedido/([0-9]+)$ pages/pedido.php?pedido=$1 [L,QSA]
-
 # Regla de reescritura para la página de tienda
 RewriteRule ^tienda/([a-zA-Z0-9]+)$ pages/tienda.php?categoria=$1 [L,QSA]
 
 # Regla de reescritura para la página de factura
 RewriteRule ^factura/([0-9]+)$ factura/factura.php?pedido=$1 [L,QSA]
 
-# Regla de reescritura para las páginas en la carpeta pages
-RewriteRule ^([a-zA-Z0-9_-]+)$ pages/$1.php [L,QSA]
+# Regla para páginas de administrador (admin-pages)
 RewriteRule ^admin/([a-zA-Z0-9_-]+)(?:/([a-zA-Z0-9_-]+))?$ pages-admin/$1.php?id=$2 [L,QSA]
 
-# Regla de reescritura para la página de compra
-RewriteRule ^compra/([a-zA-Z0-9]+)$ pages/compra.php?pedido=$1 [L,QSA]
+# Regla para páginas normales
+RewriteRule ^([a-zA-Z0-9_-]+)(?:/([a-zA-Z0-9_-]+))?$ pages/$1.php?id=$2 [L,QSA]
 
 # Si nos da error 404 que nos redirija a nuestra página
 RewriteRule ^error/([a-zA-Z0-9%20\s]+)$ pages/error.php?error=$1 [L,QSA]

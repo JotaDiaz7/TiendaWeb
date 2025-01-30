@@ -28,6 +28,7 @@ require '../controllers/usuarios/usuarios_controllers.php';
     <link rel="icon" href="/media/favicon.PNG">
     <script type="module" src="/js/checkout.js"></script>
     <script src="https://www.paypal.com/sdk/js?client-id=AbJdy91OXtflOfZCOFKw2ya5KvfPogmA9eLQtAL1jNlXEy1XmddfMAx5nBknQDqACP0f7BVm4PooSVnF&currency=EUR"></script>
+    <script src="https://js.stripe.com/v3/"></script>
     <title>La madriguera</title>
 </head>
 
@@ -37,7 +38,7 @@ require '../controllers/usuarios/usuarios_controllers.php';
         <section>
             <div id="datesWrap">
                 <h2>1. Productos</h2>
-                <div id="carrito" class="container ">
+                <div id="carrito" class="container hiddenContainer">
                     <?php productos_sesion($con, $carrito); ?>
                     <div class="buttonWrap">
                         <button id="buttonCarrito" class="button">Continuar</button>
@@ -140,7 +141,7 @@ require '../controllers/usuarios/usuarios_controllers.php';
                     </div>
                 </div>
                 <h2>4. Comprar</h2>
-                <form id="purchase" class="container hiddenContainer" method="POST">
+                <form id="purchase" class="container " method="POST">
                     <div class="rowSubmit">
                         <button id="returnPayment" class="anteriorButton button">Método de pago</button>
                     </div>
@@ -164,7 +165,13 @@ require '../controllers/usuarios/usuarios_controllers.php';
                     <input type="hidden" name="usuario" id="usuario" value="<?= $id ?>">
                     <input type="hidden" name="metodoPago" id="metodoPago">
                     <!-- <input type="submit" id="prueba"> -->
-                    <div id="paypalWrap" class="buttonWrap paypal"></div>
+                    <div id="paypalWrap" name="paypal" class="buttonPayWrap d-none"></div>
+                    <div id="stripeWrap" name="stripe" class="buttonPayWrap">
+                        <div id="card-element"></div>
+                        <button id="submitStripe" class="buttonStripe itemsCenter">
+                            <img src="/media/stripe.png" alt="">
+                        </button>
+                    </div>
                 </form>
             </div>
             <aside id="resumeWrap" class="none-md">
@@ -191,7 +198,8 @@ require '../controllers/usuarios/usuarios_controllers.php';
     <?php include "../templates/alert.php" ?>
     <?php include "../templates/menuMain.php" ?>
     <?php include "../templates/footer.php" ?>
-    <script type="module" src="/js/paypal.js"></script>                  
+    <script type="module" src="/js/stripe.js"></script>                  
+    <!-- <script type="module" src="/js/paypal.js"></script>                   -->
 </body>
 
 </html>

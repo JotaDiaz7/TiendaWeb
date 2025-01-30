@@ -5,15 +5,15 @@ require '../config/enlaces.php';
 //Establecemos conexión
 $con = conectar_db();
 
-seguridad(true, 1, $rol ?? -1);
+seguridad(true, 0, $rol ?? -1);
 
-$urlA = '/admin/pedidos';
+$urlA = '/pedidos';
 $numItemsPag = 10; //Limitamos los elementos que queremos que aparezcan
 
 //Vamos a llamar al controller para obtener los datos de los pedidos y su view
 require  '../controllers/pedidos/pedidos_controllers.php';
 //Obtenemos el número total de elementos
-$totalItems = contar($con, "");
+$totalItems = contar($con, $id);
 
 require '../config/orderBuscarPag.php';
 
@@ -45,26 +45,25 @@ require '../config/orderBuscarPag.php';
                     <a href="?order=DESC" class="button">Recientes</a>
                 </div>
                 <form method="get">
-                    <input type="text" name="buscar" class="inputForm" placeholder="Pedido o usuario">
+                    <input type="text" name="buscar" class="inputForm" placeholder="Pedido">
                     <input type="submit" class="button" value="Buscar">
                 </form>
             </div>
             <table>
                 <thead>
                     <th>ID</th>
-                    <th>Usuario</th>
                     <th>Estado</th>
                     <th>Importe</th>
                     <th>Fecha</th>
-                    <th class="editar">Editar</th>
-                    <th class="borrar">Cancelar</th>
+                    <th class="editar">Ver</th>
+                    <th class="borrar">Acción</th>
                 </thead>
                 <tbody>
                     <?php
                     if (isset($buscar)) {
-                        buscar_pedido($con, $buscar);
+                        buscar_pedido($con, $buscar, $rol);
                     } else {
-                        listar_pedidos($con, $order, "",$rol, $inicio, $numItemsPag);
+                        listar_pedidos($con, $order, $id,$rol, $inicio, $numItemsPag);
                     }
                     ?>
                 </tbody>

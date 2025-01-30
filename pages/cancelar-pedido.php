@@ -2,7 +2,7 @@
 
 require '../config/enlaces.php';
 
-seguridad(true, 1, $rol ?? -1);
+seguridad(true, 0, $rol ?? -1);
 
 if(empty($_GET["id"])){
     header("Location: /error?error=Pedido no encontrado.");
@@ -46,11 +46,10 @@ if($check){
         </section>
         <section class="deleteWrap">
             <p>¿Estás seguro de que deseas cancelar este pedido?</p>
-            <p>Esta acción es irreversible y una vez que lo canceles se sumará el stock a los productos correspondientes.</p>
             <form id="deleteForm" mehotd="POST">
                 <div class="d-flex mb15 space-between">
-                <a href="/controllers/pedidos/estado_pedido_controller.php?pedido=<?= $pedido ?>&estado=Cancelado&usuario=<?= $rol ?>" class="button submitDelete">Cancelar pedido</a>
-                <a href="/admin/pedidos" class="button cancelButton none-s">Cancelar</a>
+                    <a href="/controllers/pedidos/estado_pedido_controller.php?pedido=<?= $pedido ?>&estado=Cancelado&usuario=<?= $rol ?>" class="button submitDelete">Cancelar pedido</a>
+                    <a href="/pedidos" class="button cancelButton none-s">Cancelar</a>
                 </div>
             </form>
         </section>

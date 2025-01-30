@@ -7,12 +7,12 @@ $con = conectar_db();
 seguridad(true, 0, $rol ?? -1);
 
 //Si existe el carrito
-if (isset($_SESSION['carrito']) || empty($_GET["pedido"])) {
+if (isset($_SESSION['carrito'])) {
     header("Location: /");
     exit;
 }
 
-$pedido = $_GET["pedido"];
+$pedido = $_GET["id"];
 
 //Llamamos al model de pedidos
 require '../models/pedidos_models.php';

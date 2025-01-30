@@ -178,6 +178,9 @@ main h3{
     font-size: 1.2em;
     cursor: pointer;
 }
+.estadoPedido{
+    font-size: 1.2em;
+}
 
 .estados:hover ul{
     max-height: 200px;
