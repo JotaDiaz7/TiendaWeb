@@ -16,6 +16,13 @@ function consultar_pedido($con, $id)
     include '../views/data_pedido.php';
 }
 
+function consultar_productos_pedido($con, $id){
+    require_once '../models/pedidos_models.php';
+    $model = new PedidosModel;
+    $lineas = $model -> productosPedido($con, $id);
+    return $lineas;
+}
+
 function listar_pedidos($con, $order, $usuario, $rol, $inicio, $num)
 {
     require_once '../models/pedidos_models.php';
@@ -24,7 +31,7 @@ function listar_pedidos($con, $order, $usuario, $rol, $inicio, $num)
     include '../views/tabla_pedidos.php';
 }
 
-function contar($con, $usuario)
+function contarP($con, $usuario)
 {
     require_once '../models/pedidos_models.php';
     $model = new PedidosModel;

@@ -1,13 +1,6 @@
-<?php if ($dates['estado'] == "Cancelado") { ?>
-    <div id="estadoWrap" class="d-flex mb30">
-        <div></div>
-        <div class="d-flex space-end estadoPedido">
-            <?= $dates['estado'] ?>
-        </div>
-    </div>
-<?php } else { ?>
-    <div id="estadoWrap" class="d-flex mb30">
-        <div>
+<div id="estadoWrap" class="d-flex mb30">
+    <div>
+        <?php if ($dates['estado'] == "Cancelado") { ?>
             <a target="_blank" href="/factura/" id="factura" class="d-flex align-center">
                 <svg width="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g stroke-width="0" />
@@ -21,39 +14,39 @@
                 </svg>
                 Generar factura
             </a>
-        </div>
-        <div class="d-flex space-end">
-            <span class="estado <?= $dates['estado'] ?>"></span>
-            <?php if ($rol != 0) { ?>
-                <div class="estados">
-                    <ul>
-                        <li>
-                            <?= $dates['estado'] ?>
-                        </li>
-                        <li>
-                            <a href="/controllers/pedidos/estado_pedido_controller.php?pedido=<?= $pedido ?>&estado=Pendiente">Pendiente</a>
-                        </li>
-                        <li>
-                            <a href="/controllers/pedidos/estado_pedido_controller.php?pedido=<?= $pedido ?>&estado=Preparando">Preparando</a>
-                        </li>
-                        <li>
-                            <a href="/controllers/pedidos/estado_pedido_controller.php?pedido=<?= $pedido ?>&estado=Enviado">Enviado</a>
-                        </li>
-                        <li>
-                            <a href="/controllers/pedidos/estado_pedido_controller.php?pedido=<?= $pedido ?>&estado=Entregado">Entregado</a>
-                        </li>
-                    </ul>
-                </div>
-                <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g>
-                        <path d="M19 9L12 15L10.25 13.5M5 9L7.33333 11" stroke="#222222" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                    </g>
-                </svg>
-            <?php } else { ?>
-                <div class="d-flex space-end estadoPedido">
-                    <?= $dates['estado'] ?>
-                </div>
-            <?php } ?>
-        </div>
+        <?php } ?>
     </div>
-<?php } ?>
+    <div class="d-flex space-end">
+        <span class="estado <?= $dates['estado'] ?>"></span>
+        <?php if ($rol != 0 && $dates['estado'] != "Cancelado" && $dates['estado'] != "Entregado") { ?>
+            <div class="estados">
+                <ul>
+                    <li>
+                        <?= $dates['estado'] ?>
+                    </li>
+                    <li>
+                        <a href="/controllers/pedidos/estado_pedido_controller.php?pedido=<?= $pedido ?>&estado=Pendiente">Pendiente</a>
+                    </li>
+                    <li>
+                        <a href="/controllers/pedidos/estado_pedido_controller.php?pedido=<?= $pedido ?>&estado=Preparando">Preparando</a>
+                    </li>
+                    <li>
+                        <a href="/controllers/pedidos/estado_pedido_controller.php?pedido=<?= $pedido ?>&estado=Enviado">Enviado</a>
+                    </li>
+                    <li>
+                        <a href="/controllers/pedidos/estado_pedido_controller.php?pedido=<?= $pedido ?>&estado=Entregado">Entregado</a>
+                    </li>
+                </ul>
+            </div>
+            <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g>
+                    <path d="M19 9L12 15L10.25 13.5M5 9L7.33333 11" stroke="#222222" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </g>
+            </svg>
+        <?php } else { ?>
+            <div class="d-flex space-end estadoPedido">
+                <?= $dates['estado'] ?>
+            </div>
+        <?php } ?>
+    </div>
+</div>

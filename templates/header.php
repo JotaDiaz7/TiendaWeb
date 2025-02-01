@@ -2,28 +2,32 @@
 //Vamos a crearnos funciones para saber la url de la página en la que nos encontramos en ese momento
 $url_actual = basename($_SERVER['REQUEST_URI']);
 
-function checkoutPage()
+function noCarritoPage()
 {
     global $url_actual;
-    return strpos($url_actual, 'checkout') !== false;
+    $pages = ['compra', 'checkout', 'checkout-devolucion'];
+
+    // Recorremos el array y comprobamos si alguna página está en la URL
+    foreach ($pages as $page) {
+        if (strpos($url_actual, $page) !== false) {
+            return true;
+        }
+    }
 }
+
 function loginPage()
 {
     global $url_actual;
     return strpos($url_actual, 'login') !== false;
 }
-function compraPage()
-{
-    global $url_actual;
-    return strpos($url_actual, 'compra') !== false;
-}
+
 function cuentaPage()
 {
     global $url_actual;
-    $special_pages = ['cuenta', 'mi-perfil', 'pedidos'];
+    $pages = ['cuenta', 'mi-perfil', 'pedidos'];
 
     // Recorremos el array y comprobamos si alguna página está en la URL
-    foreach ($special_pages as $page) {
+    foreach ($pages as $page) {
         if (strpos($url_actual, $page) !== false) {
             return true;
         }
@@ -101,7 +105,7 @@ function cuentaPage()
                 </button>
             <?php }
 
-            if (!checkoutPage() && !compraPage()) {
+            if (!noCarritoPage()) {
             ?>
                 <button id="shopBag" class="buttonIcons">
                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

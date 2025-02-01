@@ -15,7 +15,6 @@ if (!isset($_SESSION['carrito']) || empty($_SESSION['carrito'])) {
 seguridad(false, 0, $rol ?? -1);
 
 require '../controllers/usuarios/usuarios_controllers.php';
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -38,7 +37,7 @@ require '../controllers/usuarios/usuarios_controllers.php';
         <section>
             <div id="datesWrap">
                 <h2>1. Productos</h2>
-                <div id="carrito" class="container hiddenContainer">
+                <div id="carrito" class="container ">
                     <?php productos_sesion($con, $carrito); ?>
                     <div class="buttonWrap">
                         <button id="buttonCarrito" class="button">Continuar</button>
@@ -141,7 +140,7 @@ require '../controllers/usuarios/usuarios_controllers.php';
                     </div>
                 </div>
                 <h2>4. Comprar</h2>
-                <form id="purchase" class="container " method="POST">
+                <form id="purchase" class="container hiddenContainer" method="POST">
                     <div class="rowSubmit">
                         <button id="returnPayment" class="anteriorButton button">Método de pago</button>
                     </div>
@@ -166,7 +165,7 @@ require '../controllers/usuarios/usuarios_controllers.php';
                     <input type="hidden" name="metodoPago" id="metodoPago">
                     <!-- <input type="submit" id="prueba"> -->
                     <div id="paypalWrap" name="paypal" class="buttonPayWrap d-none"></div>
-                    <div id="stripeWrap" name="stripe" class="buttonPayWrap">
+                    <div id="stripeWrap" name="stripe" class="buttonPayWrap d-none">
                         <div id="card-element"></div>
                         <button id="submitStripe" class="buttonStripe itemsCenter">
                             <img src="/media/stripe.png" alt="">
@@ -178,10 +177,6 @@ require '../controllers/usuarios/usuarios_controllers.php';
                 <div class="purchaseDates d-flex">
                     <span>Productos:</span>
                     <span id="priceProducts" class="mainPrice"><?= $precioProductos ?>€</span>
-                </div>
-                <div id="descWrap" class="purchaseDates d-flex hidden">
-                    <span>Descuento:</span>
-                    <span id="discount"></span>
                 </div>
                 <div class="purchaseDates d-flex">
                     <span>Envío:</span>
@@ -199,7 +194,7 @@ require '../controllers/usuarios/usuarios_controllers.php';
     <?php include "../templates/menuMain.php" ?>
     <?php include "../templates/footer.php" ?>
     <script type="module" src="/js/stripe.js"></script>                  
-    <!-- <script type="module" src="/js/paypal.js"></script>                   -->
+    <script type="module" src="/js/paypal.js"></script>                  
 </body>
 
 </html>

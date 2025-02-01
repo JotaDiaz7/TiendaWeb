@@ -1,0 +1,17 @@
+{
+    "name": "jotad/lamadriguera",
+    "autoload": {
+        "psr-4": {
+            "Jotad\\Lamadriguera\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Jota",
+            "email": "jj.md947@gmail.com"
+        }
+    ],
+    "require": {
+        "stripe/stripe-php": "^16.5"
+    }
+}

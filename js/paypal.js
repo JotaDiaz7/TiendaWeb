@@ -38,13 +38,13 @@ paypal.Buttons({
 
     onClick() {
         if (!checkbox.checked) {
-            alert("error", "Por favor, acepte nuestros términos y condiciones.");
+            alert("error", "Por favor, acepte nuestros términos y condiciones.")
         }
     },
 
     onApprove: function (data, actions) {
         if (actions.order && typeof actions.order.capture === "function") {
-            return actions.order.capture().then(async function (details) {
+            return actions.order.capture().then(async function () {
                 let dates = await setData("/controllers/pedidos/registro_controller.php", form);
                 window.location.href = '/compra/' + dates;
             });

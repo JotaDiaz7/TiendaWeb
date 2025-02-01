@@ -163,6 +163,7 @@ class PedidosModel
                 pr.id,
                 pr.nombre,
                 pr.img1,
+                lp.pedido,
                 lp.talla,
                 lp.cantidad,
                 lp.precio

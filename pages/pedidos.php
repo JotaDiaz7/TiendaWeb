@@ -13,7 +13,7 @@ $numItemsPag = 10; //Limitamos los elementos que queremos que aparezcan
 //Vamos a llamar al controller para obtener los datos de los pedidos y su view
 require  '../controllers/pedidos/pedidos_controllers.php';
 //Obtenemos el número total de elementos
-$totalItems = contar($con, $id);
+$totalItems = contarP($con, $id);
 
 require '../config/orderBuscarPag.php';
 

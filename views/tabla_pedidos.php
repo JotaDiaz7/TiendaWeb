@@ -12,7 +12,10 @@
             <td class="tc">
                 <?php if ($rol == 0) { ?>
                     <a href="/pedido/<?= $pedido["id"] ?>">
-                        <svg width="25px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"><path d="M9 4.45962C9.91153 4.16968 10.9104 4 12 4C16.1819 4 19.028 6.49956 20.7251 8.70433C21.575 9.80853 22 10.3606 22 12C22 13.6394 21.575 14.1915 20.7251 15.2957C19.028 17.5004 16.1819 20 12 20C7.81811 20 4.97196 17.5004 3.27489 15.2957C2.42496 14.1915 2 13.6394 2 12C2 10.3606 2.42496 9.80853 3.27489 8.70433C3.75612 8.07914 4.32973 7.43025 5 6.82137" stroke="#222222" stroke-width="1.5" stroke-linecap="round"/><path d="M15 12C15 13.6569 13.6569 15 12 15C10.3431 15 9 13.6569 9 12C9 10.3431 10.3431 9 12 9C13.6569 9 15 10.3431 15 12Z" stroke="#222222" stroke-width="1.5"/></svg>
+                        <svg width="25px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                            <path d="M9 4.45962C9.91153 4.16968 10.9104 4 12 4C16.1819 4 19.028 6.49956 20.7251 8.70433C21.575 9.80853 22 10.3606 22 12C22 13.6394 21.575 14.1915 20.7251 15.2957C19.028 17.5004 16.1819 20 12 20C7.81811 20 4.97196 17.5004 3.27489 15.2957C2.42496 14.1915 2 13.6394 2 12C2 10.3606 2.42496 9.80853 3.27489 8.70433C3.75612 8.07914 4.32973 7.43025 5 6.82137" stroke="#222222" stroke-width="1.5" stroke-linecap="round" />
+                            <path d="M15 12C15 13.6569 13.6569 15 12 15C10.3431 15 9 13.6569 9 12C9 10.3431 10.3431 9 12 9C13.6569 9 15 10.3431 15 12Z" stroke="#222222" stroke-width="1.5" />
+                        </svg>
                     </a>
                 <?php } else { ?>
                     <a href="/admin/pedido/<?= $pedido["id"] ?>">
@@ -62,7 +65,7 @@
                     <?php } ?>
                 <?php } else if ($pedido["estado"] == "Cancelado" && $rol != 0) { ?>
                     <a href="/controllers/pedidos/eliminar_pedido_controller.php?pedido=<?= $pedido["id"] ?>" title="Borrar pedido">
-                        <svg width="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g stroke-width="0" />
                             <g stroke-linecap="round" stroke-linejoin="round" />
                             <g>
@@ -71,6 +74,15 @@
                                 <path d="M14.5 11L14 16" stroke="#222222" stroke-width="1.5" stroke-linecap="round" />
                                 <path d="M6.5 6C6.55588 6 6.58382 6 6.60915 5.99936C7.43259 5.97849 8.15902 5.45491 8.43922 4.68032C8.44784 4.65649 8.45667 4.62999 8.47434 4.57697L8.57143 4.28571C8.65431 4.03708 8.69575 3.91276 8.75071 3.8072C8.97001 3.38607 9.37574 3.09364 9.84461 3.01877C9.96213 3 10.0932 3 10.3553 3H13.6447C13.9068 3 14.0379 3 14.1554 3.01877C14.6243 3.09364 15.03 3.38607 15.2493 3.8072C15.3043 3.91276 15.3457 4.03708 15.4286 4.28571L15.5257 4.57697C15.5433 4.62992 15.5522 4.65651 15.5608 4.68032C15.841 5.45491 16.5674 5.97849 17.3909 5.99936C17.4162 6 17.4441 6 17.5 6" stroke="#222222" stroke-width="1.5" />
                                 <path d="M18.3735 15.3991C18.1965 18.054 18.108 19.3815 17.243 20.1907C16.378 21 15.0476 21 12.3868 21H11.6134C8.9526 21 7.6222 21 6.75719 20.1907C5.89218 19.3815 5.80368 18.054 5.62669 15.3991L5.16675 8.5M18.8334 8.5L18.6334 11.5" stroke="#222222" stroke-width="1.5" stroke-linecap="round" />
+                            </g>
+                        </svg>
+                    </a>
+                <?php } else if ($pedido["estado"] == "Entregado" && $rol == 0) { ?>
+                    <a href="/checkout-devolucion/<?= $pedido["id"] ?>" title="Devolver producto">
+                        <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g>
+                                <path d="M6 8L10.125 4M6 8L10.125 12M6 8L13 8M18 8H16" stroke="#222222" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M18 16L13.875 12M18 16L13.875 20M18 16L11 16M6 16H8" stroke="#222222" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                             </g>
                         </svg>
                     </a>
