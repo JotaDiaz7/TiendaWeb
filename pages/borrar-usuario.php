@@ -2,7 +2,6 @@
 
 require '../config/enlaces.php';
 
-
 seguridad(true, 0, $rol ?? -1);
 
 //Establecemos conexión

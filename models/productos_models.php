@@ -226,7 +226,7 @@ class ProductosModel
     public function contar($con, $categoria)
     {
         if (empty($categoria)) {
-            $sql = "SELECT count(*) as count FROM productos WHERE activo = 1";
+            $sql = "SELECT count(*) as count FROM productos";
         } else {
             $sql = "SELECT count(*) as count FROM productos p
                 LEFT JOIN categorias c ON p.categoria = c.id

@@ -18,15 +18,17 @@ $rol = filter_var($_GET["usuario"], FILTER_SANITIZE_NUMBER_INT);
 //Actualizamos los datos
 $model->cambiarEstado($con, $pedido, $estado);
 
-//Modificamos el stock y las ventas
-require './cambiar_stock_ventas.php';
+if ($estado == "Cancelado") {
+    //Modificamos el stock y las ventas
+    require './cambiar_stock_ventas.php';
+}
 
 // Cerrar la conexión
 $con = null;
 
-if($rol == 0){
-    header("Location: /pedido/".$pedido);
-}else{
-    header("Location: /admin/pedido/".$pedido);
+if ($rol == 0) {
+    header("Location: /pedido/" . $pedido);
+} else {
+    header("Location: /admin/pedido/" . $pedido);
 }
 exit;

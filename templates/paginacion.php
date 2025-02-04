@@ -8,7 +8,7 @@
                 if ($pagina == $i) {
         ?> <a class="currentPag"><?= $i ?></a>
                 <?php } else { ?>
-                    <a href='<?= $urlA ?>?pagina=<?= $i . $orderUrl ?>'><?= $i ?></a>
+                    <a href='<?= $urlA ?>?pagina=<?= $i . $url ?>'><?= $i ?></a>
             <?php
                 }
             }

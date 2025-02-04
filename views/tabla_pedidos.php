@@ -77,7 +77,7 @@
                             </g>
                         </svg>
                     </a>
-                <?php } else if ($pedido["estado"] == "Entregado" && $rol == 0) { ?>
+                <?php } else if (($pedido["estado"] == "Entregado" || $pedido["estado"] == "Devolución") && $rol == 0) { ?>
                     <a href="/checkout-devolucion/<?= $pedido["id"] ?>" title="Devolver producto">
                         <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g>

@@ -6,12 +6,17 @@ $con = conectar_db();
 
 seguridad(true, 0, $rol ?? -1);
 
-if (empty($_GET["id"])) {
-    header("/error?error=Pedido no encontrado.");
-    exit;
-}
+//Vamos a llamar al controller para asegurarnos de que el pedido exista
+require '../controllers/pedidos/pedidos_controllers.php';
 
 $pedido = $_GET["id"];
+
+$check = comprobar_id($con, $pedido);
+
+if (empty($pedido) || !$check) {
+    header("Location: /error?error=Pedido no encontrado.");
+    exit;
+} 
 
 require '../controllers/usuarios/usuarios_controllers.php';
 require '../controllers/devoluciones/devoluciones_controllers.php';
@@ -65,10 +70,11 @@ require '../controllers/devoluciones/devoluciones_controllers.php';
                         <input type="checkbox" name="checkbox" id="checkbox">
                         <label for="checkbox">He leído y acepto el <a href="#">Aviso Legal y Cookies</a>, la <a href="#">Política de Privacidad</a> y <a href="#">Envíos y Devoluciones</a>.</label>
                     </div>
+                    <input type="hidden" name="pedido" id="pedido" value="<?= $pedido ?>">
                     <input type="hidden" name="usuario" id="usuario" value="<?= $id ?>">
                     <div id="devolucionWrap" class="buttonDevolucion">
                         <div id="card-element"></div>
-                        <button id="submitStripe" class="buttonStripe itemsCenter">
+                        <button id="buttonDevolucion" class="buttonDevolucion itemsCenter">
                             Crear devolución
                         </button>
                     </div>

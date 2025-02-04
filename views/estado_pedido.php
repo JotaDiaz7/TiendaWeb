@@ -1,7 +1,7 @@
 <div id="estadoWrap" class="d-flex mb30">
     <div>
-        <?php if ($dates['estado'] == "Cancelado") { ?>
-            <a target="_blank" href="/factura/" id="factura" class="d-flex align-center">
+        <?php if ($dates['estado'] != "Cancelado") { ?>
+            <a target="_blank" href="/factura/<?= $pedido?>" id="factura" class="d-flex align-center">
                 <svg width="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g stroke-width="0" />
                     <g stroke-linecap="round" stroke-linejoin="round" />
@@ -18,7 +18,7 @@
     </div>
     <div class="d-flex space-end">
         <span class="estado <?= $dates['estado'] ?>"></span>
-        <?php if ($rol != 0 && $dates['estado'] != "Cancelado" && $dates['estado'] != "Entregado") { ?>
+        <?php if ($rol != 0 && $dates['estado'] != "Cancelado" && $dates['estado'] != "Entregado" && $dates['estado'] != "Devolución") { ?>
             <div class="estados">
                 <ul>
                     <li>

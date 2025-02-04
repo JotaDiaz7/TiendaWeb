@@ -3,7 +3,7 @@
     $precioProductos = 0;
     require_once '../models/productos_models.php';
     $modelP = new ProductosModel;
-
+    if(!empty($_SESSION["devolucion"])){
     foreach ($_SESSION["devolucion"] as $item) {
         $idProd = $item['id'];
         $producto = $modelP->getProducto($con, $idProd);
@@ -42,6 +42,8 @@
     <?php
         $precioProductos += $item['precio'] * $item['cantidad'];
         
-    }
+    }}else{
     ?>
+    <li>No quedan más productos para devolver en este pedido.</li>
+    <?php } ?>
 </ul>

@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     updatePerfil()
     menuMov()
     buttonsContainer()
+    registro()
 });
 
 function buttonsContainer() {
@@ -39,14 +40,6 @@ function buttonsContainer() {
         personalInfo.classList.remove("hiddenContainer")
         purchase.classList.add("hiddenContainer")
     }
-
-    // let returnPayment = document.getElementById("returnPayment")
-    // returnPayment.onclick = e => {
-    //     e.preventDefault()
-
-    //     purchase.classList.add("hiddenContainer")
-    //     payments.classList.remove("hiddenContainer")
-    // }
 }
 
 function carritoVacio() {
@@ -92,16 +85,21 @@ function updatePerfil() {
     }
 }
 
-function prueba() {
-    let submit = document.getElementById("prueba")
+function registro() {
+    let submit = document.getElementById("buttonDevolucion")
     let form = document.getElementById("purchase")
 
     if (submit) {
         submit.onclick = async e => {
             e.preventDefault()
 
-            let dates = await setData("/controllers/pedidos/registro_controller.php", form);
-            window.location.href = '/compra/' + dates;
+            let dates = await setData("/controllers/devoluciones/registro_controller.php", form);
+
+            if(dates == "checkbox"){
+                alert("error", "Por favor, acepte nuestros términos y condiciones.")
+            }else{
+                window.location.href = '/devolucion-completada/' + dates;
+            }
         }
     }
 }

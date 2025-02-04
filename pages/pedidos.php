@@ -71,7 +71,7 @@ require '../config/orderBuscarPag.php';
         </section>
         <?php include "../templates/paginacion.php" ?>
         <section>
-            <a href="/admin/administracion">Volver al panel de control</a>
+            <a href="/cuenta">Volver a mi cuenta</a>
         </section>
     </main>
     <?php include "../templates/alert.php" ?>

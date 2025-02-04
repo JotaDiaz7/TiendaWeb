@@ -52,3 +52,10 @@ function pedido_cancelado($con, $pedido){
     $dates = $model -> getPedido($con, $pedido);
     return $dates["estado"] == "Cancelado" ? true : false;
 }
+
+function comprobar_id($con, $pedido){
+    require_once '../models/pedidos_models.php';
+    $model = new PedidosModel;
+    $dates = $model -> comprobarId($con, $pedido);
+    return $dates;
+}

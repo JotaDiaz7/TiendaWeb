@@ -198,15 +198,15 @@ main h3{
 .Pendiente.estado{
     background-color: red;
 }
-.Preparando.estado{
+.Preparando.estado, .Recogida.estado{
     background-color: orange;
 }
-.Enviado.estado{
+.Enviado.estado, .Revisión.estado{
     background-color: green;
 }
 .Devolución.estado{
     background-color: brown;
 }
-.Entregado.estado, .Recibido.estado{
+.Entregado.estado{
     display: none !important;
 }

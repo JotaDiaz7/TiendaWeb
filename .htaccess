@@ -12,7 +12,8 @@ RewriteRule ^producto/([a-zA-Z0-9]+)/([a-zA-Z0-9-]+)(?:/talla-([0-9]+))?$ pages/
 RewriteRule ^tienda/([a-zA-Z0-9]+)$ pages/tienda.php?categoria=$1 [L,QSA]
 
 # Regla de reescritura para la página de factura
-RewriteRule ^factura/([0-9]+)$ factura/factura.php?pedido=$1 [L,QSA]
+RewriteRule ^factura/([0-9]+)$ factura/factura.php?id=$1 [L,QSA]
+RewriteRule ^factura-devolucion/([0-9]+D)$ factura/factura-devolucion.php?id=$1 [L,QSA]
 
 # Regla para páginas de administrador (admin-pages)
 RewriteRule ^admin/([a-zA-Z0-9_-]+)(?:/([a-zA-Z0-9_-]+))?$ pages-admin/$1.php?id=$2 [L,QSA]

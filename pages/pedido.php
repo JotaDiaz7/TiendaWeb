@@ -9,12 +9,14 @@ seguridad(true, 0, $rol ?? -1);
 //Vamos a llamar al controller para obtener los datos del pedido y su view
 require '../controllers/pedidos/pedidos_controllers.php';
 
-if (empty($_GET["id"])) {
-    header("/error?error=Pedido no encontrado.");
+$pedido = $_GET["id"];
+
+$check = comprobar_id($con, $pedido);
+
+if (empty($pedido) || !$check) {
+    header("Location: /error?error=Pedido no encontrado.");
     exit;
 } 
-    
-$pedido = $_GET["id"];
 
 ?>
 <!DOCTYPE html>

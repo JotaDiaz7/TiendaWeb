@@ -1,10 +1,10 @@
 <?php
 //Vamos a capturar si se hubiera seleccionado un orden
 $order = "";
-$orderUrl ="";
+$url ="";
 if (isset($_GET["order"]) && ($_GET["order"] == "ASC" || $_GET["order"] == "DESC")) {
     $order = $_GET["order"];
-    $orderUrl = "&order=".$order;
+    $url = "&order=".$order;
 }
 
 if (isset($_GET["buscar"]) && !empty($_GET["buscar"])) {

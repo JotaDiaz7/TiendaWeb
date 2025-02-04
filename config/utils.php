@@ -188,3 +188,18 @@ function crearIdPedido()
 
     return $id;
 }
+
+//Y otra para las devoluciones
+function crearIdDevolucion()
+{
+    $count = 1;
+    $id = "";
+
+    while ($count <= 7) {
+        $num = strval(rand(1, 9));
+        $id .= $num;
+        $count++;
+    }
+
+    return $id."D";
+}
