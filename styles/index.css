@@ -70,7 +70,7 @@ header{
     margin-right: 7px;
     font-size: 0.85rem;
 }
-.precioWrap{
+.carrusel .precioWrap{
     flex-direction: row-reverse;
 }
 

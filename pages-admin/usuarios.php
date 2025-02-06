@@ -9,7 +9,7 @@ seguridad(true, 2, $rol ?? -1);
 
 //Nos vamos a crear una variable para en caso de que haya paginación ponerlo como enlace
 $urlA = '/admin/usuarios';
-$numItemsPag = 6; //Limitamos los elementos que queremos que aparezcan
+$numItemsPag = 7; //Limitamos los elementos que queremos que aparezcan
 
 //Vamos a llamar al controller para obtener los datos de los usuarios y su view
 require  '../controllers/usuarios/usuarios_controllers.php';

@@ -76,11 +76,9 @@ try {
         'payment_method_types' => ['card'],
         'line_items' => $productosCompra,
         'mode' => 'payment',
-        'success_url' => $YOUR_DOMAIN . '/error?error=Todo bien',
+        'success_url' => $YOUR_DOMAIN . '/controllers/pedidos/registro_controller.php?usuario=' . $usuarioId . '&metodoPago=' . $metodo . '&importe=' . $importe,
         'cancel_url' => $YOUR_DOMAIN. '/error?error=No se ha podido completar la compra.'
     ]);
-
-    // /controllers/pedidos/registro_controller.html?usuario=' . $usuarioId . '&metodoPago=' . $metodo . '&importe=' . $importe
 
     echo json_encode(['id' => $checkout_session->id]);
 } catch (Exception $e) {

@@ -61,9 +61,9 @@ seguridad(true, 2, $rol ?? -1);
                 </ul>
             </div>
             <div>
-                <h3>Ganancias</h3>
+                <h3>Facturación</h3>
                 <ul>
-                    <li><a href="/admin/informe?titulo=Ganancias&tipo=5&informe=2">Filtrar por fecha</a></li>
+                    <li><a href="/admin/informe?titulo=Facturación&tipo=5&informe=2">Filtrar por fecha</a></li>
                 </ul>
             </div>
         </section>

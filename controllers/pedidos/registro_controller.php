@@ -88,5 +88,9 @@ unset($_SESSION["carrito"]);
 // Cerrar la conexión
 $con = null;
 
-echo json_encode($id);
+if(isset($_GET["usuario"])){
+    header("Location: /compra/".$id);
+}else{
+    echo json_encode($id);
+}
 exit;

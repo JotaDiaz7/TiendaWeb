@@ -1,6 +1,12 @@
 <?php
 function crearIdUsuario($nombre)
 {
+    $nombre = str_replace(  
+        ['á', 'é', 'í', 'ó', 'ú', 'ñ', 'ü', 'ä', 'ö', 'ë', 'ï', 'â', 'ê', 'î', 'ô', 'û'],  
+        ['a', 'e', 'i', 'o', 'u', 'n', 'u', 'a', 'o', 'e', 'i', 'a', 'e', 'i', 'o', 'u'],  
+        $nombre  
+    );
+
     $count = 1;
     $nums = "";
 
@@ -81,6 +87,12 @@ function validarMovil($tel)
 //Vamos a hacer una función para crear el id del producto
 function crearIdProducto($nombre)
 {
+    $nombre = str_replace(  
+        ['á', 'é', 'í', 'ó', 'ú', 'ñ', 'ü', 'ä', 'ö', 'ë', 'ï', 'â', 'ê', 'î', 'ô', 'û'],  
+        ['a', 'e', 'i', 'o', 'u', 'n', 'u', 'a', 'o', 'e', 'i', 'a', 'e', 'i', 'o', 'u'],  
+        $nombre  
+    );
+    
     $count = 1;
     $nums = "";
 

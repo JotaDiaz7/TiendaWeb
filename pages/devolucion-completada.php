@@ -18,7 +18,7 @@ if(empty($devolucion) || !$check){
     exit;
 }
 
-$dates = $model->getDevolucion($con, $pedido);
+$dates = $model->getDevolucion($con, $devolucion);
 
 ?>
 <!DOCTYPE html>
@@ -42,11 +42,11 @@ $dates = $model->getDevolucion($con, $pedido);
         </section>
         <section class="mainWrap">
             <h3>Hola, <span class="nombre"><?= $nombre ?></span></h3>
-            <p class="none-s">Queremos darte las gracias de corazón por confiar en nosotros. Nos complace informarte que tu devolución del pedido #<?= $datesDevol['pedido'] ?> ha sido procesada con éxito.</p>
+            <p class="none-s">Queremos darte las gracias de corazón por confiar en nosotros. Nos complace informarte que tu devolución del pedido <?= $dates['pedido'] ?> ha sido procesada con éxito.</p>
             <p>El reembolso correspondiente a tu pedido se realizará cuando el producto llegue a tienda y se compruebe que esté en buen estado, en breve recibirás un correo con todos los detalles. Agradecemos tu paciencia y esperamos verte pronto de nuevo en nuestra tienda.</p>
             <p>Mientras tanto, aquí tienes los detalles de tu devolución:</p>
             <ul>
-                <li><strong>Número de devolución: </strong>#<?= $devolucion ?></li>
+                <li><strong>Número de devolución: </strong><?= $devolucion ?></li>
                 <li><strong>Fecha: </strong><?= $dates['fecha'] ?></li>
                 <li><strong>Total a devolver: </strong><?= $dates['importe'] ?>€</li>
                 <li><strong>Dirección de recogida: </strong><?= $dates['direccion'] ?>, <?= $dates['ciudad'] ?>, <?= $dates['provincia'] ?></li>

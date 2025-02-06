@@ -2,7 +2,7 @@
     foreach ($dates as $devolucion) {
 ?>
         <tr>
-            <td><?= $devolucion["ID"] ?></td>
+            <td><?= $devolucion["id"] ?></td>
             <td><?= $devolucion["pedido"] ?></td>
             <td><?= $devolucion["estado"] ?></td>
             <td><?= $devolucion["importe"] ?>€</td>
