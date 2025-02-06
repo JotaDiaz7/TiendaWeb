@@ -51,6 +51,7 @@ if (empty($devolucion) || !$check) {
     <?php include "../templates/alert.php" ?>
     <?php include "../templates/menuMain.php" ?>
     <?php include "../templates/footer.php" ?>
+    <?php include "../templates/carrito.php" ?>
 </body>
 
 </html>

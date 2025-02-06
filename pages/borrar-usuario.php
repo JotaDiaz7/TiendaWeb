@@ -42,7 +42,7 @@ $con = conectar_db();
                     <label for="checkbox">Confirmo que deseo eliminar mi cuenta</label>
                 </div>
                 <div class="none-xmd d-flex">
-                    <a href="/" class="button cancelButton">Cancelar</a>
+                    <a href="/cuenta" class="button cancelButton">Cancelar</a>
                 </div>
             </form>
         </section>

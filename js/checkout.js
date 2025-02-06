@@ -130,6 +130,8 @@ function register() {
                 alert("error", dates)
             } else if (dates == "ExisteEmail") {
                 alert("error", "Email ya registrado.")
+            } else if (dates == "movil") {
+                alert("error", "Formato de móvil incorrecto.")
             } else if (dates == "password") {
                 alert("error", "La contraseña debe tener al menos 8 caracteres.")
             } else if (dates == "checkbox") {
