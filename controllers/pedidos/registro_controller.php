@@ -26,7 +26,7 @@ while ($found) {
 }
 
 //Obtenemos el id del usuario
-$usuarioId = htmlspecialchars(trim($_POST["usuario"]));
+$usuarioId = htmlspecialchars(trim($_POST["usuario"] ?? $_GET["usuario"] ));
 
 //Incluímos el modelo de usuario
 require '../../models/usuarios_models.php';
@@ -36,7 +36,7 @@ $modelU = new UsuariosModel;
 $usuario = $modelU->getUsuario($con, $usuarioId);
 
 //Obtenemos el método de pago
-$metodoPago = htmlspecialchars(trim($_POST["metodoPago"]));
+$metodoPago = htmlspecialchars(trim($_POST["metodoPago"] ?? $_GET["metodoPago"]));
 
 //Vamos a crear la fecha y la hora de registro 
 $fechaReg = date('Y-m-d');
@@ -44,7 +44,7 @@ date_default_timezone_set('Europe/Madrid');
 $hora = date('H:i');
 
 //Por último, obtenemos el importe
-$importe = filter_var($_POST["importe"], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+$importe = filter_var($_POST["importe"] ?? $_GET["importe"], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
 
 //Registramos el pedido
 $model->registro($con, $id, $usuarioId, $metodoPago, $usuario["direccion"], $usuario["ciudad"], $usuario["provincia"], $fechaReg, $hora, $importe);

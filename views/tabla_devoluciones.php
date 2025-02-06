@@ -9,14 +9,14 @@
             <td><?= $devolucion["fecha"] ?></td>
             <td class="tc">
                 <?php if ($rol == 0) { ?>
-                    <a href="/devolucion/<?= $devolucion["ID"] ?>">
+                    <a href="/devolucion/<?= $devolucion["id"] ?>">
                         <svg width="25px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
                             <path d="M9 4.45962C9.91153 4.16968 10.9104 4 12 4C16.1819 4 19.028 6.49956 20.7251 8.70433C21.575 9.80853 22 10.3606 22 12C22 13.6394 21.575 14.1915 20.7251 15.2957C19.028 17.5004 16.1819 20 12 20C7.81811 20 4.97196 17.5004 3.27489 15.2957C2.42496 14.1915 2 13.6394 2 12C2 10.3606 2.42496 9.80853 3.27489 8.70433C3.75612 8.07914 4.32973 7.43025 5 6.82137" stroke="#222222" stroke-width="1.5" stroke-linecap="round" />
                             <path d="M15 12C15 13.6569 13.6569 15 12 15C10.3431 15 9 13.6569 9 12C9 10.3431 10.3431 9 12 9C13.6569 9 15 10.3431 15 12Z" stroke="#222222" stroke-width="1.5" />
                         </svg>
                     </a>
                 <?php } else { ?>
-                    <a href="/admin/devolucion/<?= $devolucion["ID"] ?>">
+                    <a href="/admin/devolucion/<?= $devolucion["id"] ?>">
                         <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g>
                                 <path d="M15 20.47H6.08C5.17469 20.4673 4.30737 20.1059 3.66815 19.4648C3.02894 18.8237 2.66999 17.9553 2.67 17.05V8.15999C2.66999 7.25468 3.02894 6.3863 3.66815 5.74521C4.30737 5.10413 5.17469 4.74264 6.08 4.73999H8.75C8.94891 4.73999 9.13968 4.81901 9.28033 4.95966C9.42098 5.10031 9.5 5.29108 9.5 5.48999C9.5 5.6889 9.42098 5.87967 9.28033 6.02032C9.13968 6.16097 8.94891 6.23999 8.75 6.23999H6.08C5.57252 6.24263 5.08672 6.44608 4.72881 6.80587C4.3709 7.16565 4.16999 7.6525 4.17 8.15999V17.05C4.16603 17.3038 4.21243 17.5559 4.30651 17.7916C4.4006 18.0274 4.5405 18.2422 4.71812 18.4235C4.89575 18.6049 5.10757 18.7492 5.34133 18.8481C5.57509 18.9471 5.82616 18.9987 6.08 19H15C15.2521 19 15.5018 18.9503 15.7348 18.8538C15.9677 18.7574 16.1794 18.6159 16.3576 18.4376C16.5359 18.2593 16.6774 18.0477 16.7738 17.8147C16.8703 17.5818 16.92 17.3321 16.92 17.08V15.27C16.92 15.0711 16.999 14.8803 17.1397 14.7397C17.2803 14.599 17.4711 14.52 17.67 14.52C17.8689 14.52 18.0597 14.599 18.2003 14.7397C18.341 14.8803 18.42 15.0711 18.42 15.27V17.05C18.42 17.4991 18.3315 17.9438 18.1597 18.3588C17.9878 18.7737 17.7359 19.1507 17.4183 19.4683C17.1007 19.7859 16.7237 20.0378 16.3088 20.2097C15.8938 20.3815 15.4491 20.47 15 20.47Z" fill="#000000" />
@@ -30,7 +30,7 @@
             </td>
             <td class="tc">
                 <?php if ($devolucion["estado"] == "Pendiente"  && $rol == 0) { ?>
-                    <a href="/cancelar-devolucion/<?= $devolucion["ID"] ?>" title="Cancelar devolución">
+                    <a href="/cancelar-devolucion/<?= $devolucion["id"] ?>" title="Cancelar devolución">
                         <svg width="25px" height="25px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000">
                             <g>
                                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -45,7 +45,7 @@
                         </svg>
                     </a>
                 <?php } else if ($devolucion["estado"] == "Cancelada" && $rol != 0) { ?>
-                    <a href="/controllers/devoluciones/eliminar_devolucion_controller.php?devolucion=<?= $devolucion["ID"] ?>" title="Borrar devolución">
+                    <a href="/controllers/devoluciones/eliminar_devolucion_controller.php?devolucion=<?= $devolucion["id"] ?>" title="Borrar devolución">
                         <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g stroke-width="0" />
                             <g stroke-linecap="round" stroke-linejoin="round" />

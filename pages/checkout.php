@@ -163,7 +163,6 @@ require '../controllers/usuarios/usuarios_controllers.php';
                     </div>
                     <input type="hidden" name="usuario" id="usuario" value="<?= $id ?>">
                     <input type="hidden" name="metodoPago" id="metodoPago">
-                    <!-- <input type="submit" id="prueba"> -->
                     <div id="paypalWrap" name="paypal" class="buttonPayWrap d-none"></div>
                     <div id="stripeWrap" name="stripe" class="buttonPayWrap d-none">
                         <div id="card-element"></div>

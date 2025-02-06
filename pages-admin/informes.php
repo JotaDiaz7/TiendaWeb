@@ -56,14 +56,14 @@ seguridad(true, 2, $rol ?? -1);
             <div>
                 <h3>Devoluciones</h3>
                 <ul>
-                    <li><a href="">Filtrar por estado</a></li>
-                    <li><a href="">Filtrar por fecha</a></li>
+                    <li><a href="/admin/informe?titulo=Devoluciones estado&tipo=4&informe=1">Filtrar por estado</a></li>
+                    <li><a href="/admin/informe?titulo=Devoluciones fecha&tipo=4&informe=2">Filtrar por fecha</a></li>
                 </ul>
             </div>
             <div>
-                <h3>Ventas</h3>
+                <h3>Ganancias</h3>
                 <ul>
-                    <li><a href="">Filtrar por fecha</a></li>
+                    <li><a href="/admin/informe?titulo=Ganancias&tipo=5&informe=2">Filtrar por fecha</a></li>
                 </ul>
             </div>
         </section>

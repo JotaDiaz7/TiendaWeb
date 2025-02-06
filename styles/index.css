@@ -9,145 +9,99 @@ header{
     padding: 40px 20px;
     overflow-x: hidden;    
 }
-#newWrap{
-    white-space: nowrap;
-    padding-top: 30px;
-    cursor:grab;
-    
-}
+
 @media (min-width: 767.98px) {
     .container{
         padding: 40px;
     }
 }
 
-/*PRODUCTOS NOVEDADES*/
-#novedades .productCard{
+/*carrusel*/
+.carrusel{
+    overflow: hidden; 
+    white-space: nowrap; 
+    position: relative;
+    padding-top: 30px;
+    cursor:grab; 
+}
+.productosCarrusel {
+    animation: marquesina 50s linear infinite; /* Animación continua */
+}
+@keyframes marquesina {
+    from {
+        transform: translateX(0%);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+.productCard{
     width: 100%;
     height: 230px;
     margin-right: 70px;
     display: inline-block;
 }
-#novedades .imageWrap{
+.imageWrap{
     height: 80%;
     display: block;
 }
-#novedades .imageWrap img{
+.imageWrap img{
     width: 100%;
     height: 100%;
     object-fit: contain;
 }
-#novedades .infoWrap{
+.infoWrap{
     height: 20%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-#novedades .infoWrap .title {
+.infoWrap .title {
     text-align: center;
     margin: 5px 0px;
 }
-#novedades .infoWrap .price{
+.infoWrap .price{
     text-align: right;
     padding-right: 10px;
 }
-#novedades .infoWrap .originalPrice{
+.infoWrap .originalPrice{
     text-decoration:line-through;
     color: var(--descuento);
     margin-right: 7px;
     font-size: 0.85rem;
 }
+.precioWrap{
+    flex-direction: row-reverse;
+}
 
 @media (min-width:768px) {
-    #novedades .productCard{
+    .productCard{
         width: 230px;
         height: 230px;
     }
-    #novedades .infoWrap .title {
+    .infoWrap .title {
         font-size: 1rem;
     }
-    #novedades .infoWrap .price{
+    .infoWrap .price{
         font-size: 0.9rem;
     }
 }
 @media (min-width:998px) {
-    #novedades .productCard{
+    .productCard{
         width: 300px;
         height: 280px;
     }
-    #novedades .infoWrap .title {
+    .infoWrap .title {
         font-size:1.1rem;
     }
-    #novedades .infoWrap .price{
+    .infoWrap .price{
         font-size: 1rem;
-    }
-}
-
-/*PRODUCTOS TOP VENTAS*/
-#ventasWrap{
-    flex-wrap: wrap;
-}
-#topVentas .productCard{
-    width: 45%;
-    height: 190px;
-    display: inline-block;
-    margin-bottom: 25px;
-}
-#topVentas .imageWrap{
-    height: 75%;
-    display: block;
-}
-#topVentas .imageWrap img{
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-#topVentas .infoWrap{
-    height: 20%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: column;
-}
-#topVentas .infoWrap .title {
-    text-align: center;
-    font-size: 0.9rem;
-}
-#topVentas .infoWrap .price{
-    text-align: right;
-    padding-right: 10px;
-    font-size: 0.9rem;
-}
-#topVentas .infoWrap .originalPrice{
-    text-decoration:line-through;
-    color: var(--descuento);
-    margin-right: 7px;
-    font-size: 0.85rem;
-}
-@media (min-width:768px) {
-    #topVentas .productCard{
-        width: 45%;
-        height: 180px;
-        margin-top: 35px;
-        margin-bottom: 0px;
-    }
-    #topVentas .infoWrap{
-        flex-direction: row;
-    }
-    #topVentas .infoWrap .title {
-        font-size: 1rem;
-    }
-}
-@media (min-width:998px) {
-    #topVentas .productCard{
-        width: 15%;
-        height: 200px;
     }
 }
 
 /*Banner*/
 #mainBanner{
-    height: 90vh;
+    height: 50vh;
 }
 #mainBanner img{
     object-fit: cover;

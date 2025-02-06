@@ -599,21 +599,25 @@ p#messageError, #messageOk {
     font-weight: bold;
 }
 
-/*Alerta admin pedidos/devoluciones*/
-#alertPedidos{
-    width: 30px;
-    height: 30px;
-    border-radius: 99px;
-    background-color: green;
-    cursor: pointer;
-    color: white;
+/*Spinner*/
+.spinner{
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.529);
 }
-#alertDevoluciones{
-    width: 30px;
-    height: 30px;
-    border-radius: 99px;
-    background-color: red;
-    margin-right: 20px;
-    cursor: pointer;
-    color: white;
+
+.spinner img {
+    animation: spin 1.5s linear infinite; /* Rotación continua */
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }

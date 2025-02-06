@@ -97,3 +97,14 @@ td{
     border: 1px solid grey;
     border-radius: 10px;
 }
+
+/*Inputs*/
+.inputForm{
+    padding: 10px 10px 7px 10px;
+    text-align: center;
+    border-radius: 10px;
+    border: 1px solid var(--mainColor);
+    position: relative;
+    background: transparent;
+    margin-right: 20px;
+}

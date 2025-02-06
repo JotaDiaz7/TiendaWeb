@@ -211,7 +211,7 @@ function restarProdCart() {
     })
 }
 
-function urlCart(){
+function urlCart() {
     let url = window.location.href;
 
     if (!url.includes("checkout")) {//Para todas las páginas, menos para la de checkout
@@ -221,7 +221,8 @@ function urlCart(){
         }
         // Redirige a la nueva URL con `?cart`
         window.location.href = url + "?cart"
-    }else{
+    } else {
         window.location.reload()
     }
 }
+

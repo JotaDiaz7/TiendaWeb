@@ -280,4 +280,64 @@ class ProductosModel
             exit;
         }
     }
+
+    //Para obtener los productos que se hayan subido en las últimas dos semanas
+    public function novedades($con, $limit)
+    {
+        $sql = "SELECT * FROM productos 
+        WHERE registro >= DATE_SUB(NOW(), INTERVAL 2 WEEK)
+        ORDER BY registro DESC
+        LIMIT :limit";
+
+        try {
+            $stmt = $con->prepare($sql);
+            $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+            $stmt->execute();
+
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            header("Location: /error?error=Error en la consulta: " . $e->getMessage());
+            exit;
+        }
+    }
+
+    //Para obtener los productos que más se hayan vendido
+    public function topVentas($con, $limit)
+    {
+        $sql = "SELECT * FROM productos 
+            WHERE ventas > 0 order by ventas
+            LIMIT :limit";
+
+        try {
+            $stmt = $con->prepare($sql);
+            $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+            $stmt->execute();
+
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            header("Location: /error?error=Error en la consulta: " . $e->getMessage());
+            exit;
+        }
+    }
+
+    //Para obtener los productos con descuento
+    public function descuentos($con, $limit)
+    {
+        $sql = "SELECT * FROM productos p
+            JOIN descuentos d ON p.descuento = d.nombre
+            WHERE p.descuento != ''
+            AND CURDATE() BETWEEN d.fecha_inicio AND d.fecha_fin
+            order by ventas LIMIT :limit";
+
+        try {
+            $stmt = $con->prepare($sql);
+            $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+            $stmt->execute();
+
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            header("Location: /error?error=Error en la consulta: " . $e->getMessage());
+            exit;
+        }
+    }
 }

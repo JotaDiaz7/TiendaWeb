@@ -1,7 +1,7 @@
 <?php
 function listar_stock($con, $producto, $esCalzado)
 {
-    require '../models/prod_nums_models.php';
+    require_once '../models/prod_nums_models.php';
     $model = new ProdNumsModel;
     $dates = $model -> getStock($con, $producto);
     $calzado = $esCalzado;
@@ -10,7 +10,7 @@ function listar_stock($con, $producto, $esCalzado)
 
 function obetener_min_talla($con, $producto)
 {
-    require_once '../models/prod_nums_models.php';
+    require_once __DIR__ .'/../../models/prod_nums_models.php';
     $model = new ProdNumsModel;
     $dates = $model -> getMinTalla($con, $producto);
     return $dates;

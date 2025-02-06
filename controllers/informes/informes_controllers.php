@@ -1,6 +1,6 @@
 <?php
 
-function obtener_datos_informe($con, $tipo, $informe, $inicio, $num, $dato){
+function obtener_datos_informe($con, $tipo, $informe, $inicio, $num, $dato, $fecha_inicio, $fecha_fin){
     require_once '../models/informes_models.php';
     $model = new InformesModel;
 
@@ -27,16 +27,26 @@ function obtener_datos_informe($con, $tipo, $informe, $inicio, $num, $dato){
             include '../views/tabla_informe_productos.php';
         break;
         case 3:
-            $dates = $model ->pedidos($con, $dato, $inicio, $num);
+            $dates = $model ->pedidos($con, $dato, $inicio, $num, $fecha_inicio, $fecha_fin);
             include '../views/tabla_informe_pedidos.php';
+        break;
+        case 4:
+            $dates = $model ->devoluciones($con, $dato, $inicio, $num, $fecha_inicio, $fecha_fin);
+            include '../views/tabla_informe_devoluciones.php';
+        break;
+        case 5:
+            $dates = $model ->ganancias($con,$fecha_inicio, $fecha_fin);
+            include '../views/tabla_informe_ganancias.php';
         break;
     }
 }
 
-function contar($con, $tipo, $informe, $dato){
+function contar($con, $tipo, $informe, $dato, $fecha_inicio, $fecha_fin): int{
     require_once '../models/informes_models.php';
     $model = new InformesModel;
-    $num = $model -> contar($con, $tipo, $informe, $dato);
-    return $num;
+    if($tipo != 5){//En el informe de ganancias no queremos que se haga la consulta
+        $num = $model -> contar($con, $tipo, $informe, $dato, $fecha_inicio, $fecha_fin);
+    }
+    return $num ?? 0;
 }
 
