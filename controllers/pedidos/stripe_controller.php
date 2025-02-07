@@ -24,7 +24,7 @@ $modelD = new DescuentosModel;
 
 try {
 
-    $YOUR_DOMAIN = 'http://lamadriguera.test'; // Asegúrate de que este dominio sea correcto
+    $YOUR_DOMAIN = 'http://lamadriguera.great-site.net'; // Asegúrate de que este dominio sea correcto
     $precioTotal = 0;
     $productos = [];  
     $productosCompra = [];  

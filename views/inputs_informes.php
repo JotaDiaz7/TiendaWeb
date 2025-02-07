@@ -64,7 +64,7 @@
                 <path d="M19 9L12 15L10.25 13.5M5 9L7.33333 11" stroke="#222222" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
             </g>
         </svg>
-    <?php } else if ($informe == 2 && ($tipo != 1 || $tipo != 2)) { ?>
+    <?php } else if ($informe == 2 && ($tipo != 1 && $tipo != 2)) { ?>
         <form>
             <!-- Ponemos inputs tipo hidden para formar la ulr -->
             <input type="hidden" name="titulo" value="<?= $titulo ?>">

@@ -305,7 +305,7 @@ class ProductosModel
     public function topVentas($con, $limit)
     {
         $sql = "SELECT * FROM productos 
-            WHERE ventas > 0 order by ventas
+            WHERE ventas > 0 order by ventas DESC
             LIMIT :limit";
 
         try {
