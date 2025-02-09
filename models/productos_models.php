@@ -286,6 +286,7 @@ class ProductosModel
     {
         $sql = "SELECT * FROM productos 
         WHERE registro >= DATE_SUB(NOW(), INTERVAL 2 WEEK)
+        AND activo = 1
         ORDER BY registro DESC
         LIMIT :limit";
 
@@ -305,7 +306,7 @@ class ProductosModel
     public function topVentas($con, $limit)
     {
         $sql = "SELECT * FROM productos 
-            WHERE ventas > 0 order by ventas DESC
+            WHERE ventas > 0 AND activo = 1 order by ventas DESC
             LIMIT :limit";
 
         try {
@@ -323,9 +324,17 @@ class ProductosModel
     //Para obtener los productos con descuento
     public function descuentos($con, $limit)
     {
-        $sql = "SELECT * FROM productos p
+        $sql = "SELECT 
+                p.img1,
+                p.id,
+                p.nombre as nombre,
+                p.precio,
+                d.importe,
+                d.tipo
+            FROM productos p
             JOIN descuentos d ON p.descuento = d.nombre
             WHERE p.descuento != ''
+            AND p.activo = 1
             AND CURDATE() BETWEEN d.fecha_inicio AND d.fecha_fin
             order by ventas LIMIT :limit";
 
